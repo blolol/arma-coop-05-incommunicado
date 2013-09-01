@@ -1,0 +1,19 @@
+/**
+ * Mission configuration.
+**/
+
+onLoadName = "Dynamic Loop";
+onLoadMission = "Destroy the enemy's communications towers.";
+author = "Raws";
+
+class Header {
+	gameType = COOP;
+	minPlayers = 1;
+	maxPlayers = 5;
+};
+
+class CfgFunctions {
+	class BLOL {
+		#include "server\include\functions.hpp"
+	};
+};

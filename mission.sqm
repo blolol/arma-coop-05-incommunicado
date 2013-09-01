@@ -105,7 +105,7 @@ class Mission
 					leader=1;
 					rank="SERGEANT";
 					skill=0.46666664;
-					text="bluforTeamLeader";
+					init="bluforFireTeam = group this";
 				};
 			};
 		};
