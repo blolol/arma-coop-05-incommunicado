@@ -145,7 +145,7 @@ _objectives = []; // Objectives tracked by the server
 missionNamespace setVariable ["BLOL_objectives", _objectives];
 
 // Distribute tasks and notes to clients using Taskmaster
-[_tasks, _notes] execVM "vendor\shk_taskmaster.sqf";
+[_tasks, _notes] call (compile (preprocessFileLineNumbers "vendor\shk_taskmaster.sqf"));
 
 /**
  * Give demolition gear to players.
@@ -158,12 +158,3 @@ missionNamespace setVariable ["BLOL_objectives", _objectives];
 	_unit addBackpack "B_AssaultPack_Base";
 	{ _unit addMagazine "DemoCharge_Remote_Mag" } forEach [1, 2, 3];
 } forEach (units bluforFireTeam);
-
-/**
- * Choose spawn point and move players to it.
-**/
-
-private ["_availableSpawnPoints", "_spawnPoint"];
-_availableSpawnPoints = ["spawn_0", "spawn_1", "spawn_2", "spawn_3"];
-_spawnPoint = getMarkerPos (_availableSpawnPoints call BIS_fnc_selectRandom);
-{ _x setPos _spawnPoint } forEach (units bluforFireTeam);

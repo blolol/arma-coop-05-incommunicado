@@ -2,5 +2,5 @@
  * Main client entry point.
 **/
 
-// Initialize Taskmaster
-// [[], []] execVM "vendor\shk_taskmaster.sqf";
+// Initialize SHK_taskmaster
+[[], []] call (compile (preprocessFileLineNumbers "vendor\shk_taskmaster.sqf"));
