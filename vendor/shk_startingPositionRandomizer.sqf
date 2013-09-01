@@ -65,19 +65,18 @@
     0.2  Switch to Arma 3, changed start marker to A3 equivalent. Now object height is also taken into account.
 */
 
-if isserver then {
-  // [object, position of old point of reference, position of new point of reference]
-  private "_fncMove";
-  _fncMove = {
-    private ["_dir","_dst","_obj","_new","_old"];
-    _obj = _this select 0;
-    _old = _this select 1;
-    _new = _this select 2;
-    _dir = ((getpos _obj select 0) - (_old select 0)) atan2 ((getpos _obj select 1) - (_old select 1));
-    _dst = _old distance _obj;
-    _obj setpos [((_new select 0) + (_dst * sin _dir)),((_new select 1) + (_dst * cos _dir)),(getpos _obj select 2)];
-  };
+// [object, position of old point of reference, position of new point of reference]
+SHK_fnc_move = {
+  private ["_dir","_dst","_obj","_new","_old"];
+  _obj = _this select 0;
+  _old = _this select 1;
+  _new = _this select 2;
+  _dir = ((getpos _obj select 0) - (_old select 0)) atan2 ((getpos _obj select 1) - (_old select 1));
+  _dst = _old distance _obj;
+  _obj setpos [((_new select 0) + (_dst * sin _dir)),((_new select 1) + (_dst * cos _dir)),(getpos _obj select 2)];
+};
 
+if isserver then {
   private ["_side","_rand","_oldPos","_newPos","_range"];
   SHK_randstapos_selected = [];
   {
@@ -93,7 +92,7 @@ if isserver then {
       // move playable units
       {
         if (_side == tolower(format ["%1",side _x])) then {
-          [_x,_oldPos,_newPos] call _fncMove;
+          [_x,_oldPos,_newPos] call SHK_fnc_move;
         };
       } foreach (if ismultiplayer then {playableunits} else {switchableunits});
       
@@ -104,7 +103,7 @@ if isserver then {
         if (typename _range  == (typename [])) then {
           if (count _range > 0) then {
             {
-              [_x,_oldPos,_newPos] call _fncMove;
+              [_x,_oldPos,_newPos] call SHK_fnc_move;
             } foreach _range;
           };
         
@@ -135,6 +134,27 @@ if isserver then {
     waituntil {!isnil "SHK_randstapos_selected"};
 
     _s = tolower(str(side player));
+
+    private ["_markerIndex"];
+    {
+      format ["_x = %1", _x] call BIS_fnc_log;
+
+      private ["_side", "_rand"];
+      _side = _x select 0;
+      _rand = _x select 1;
+
+      if (_side == _s) then {
+        _markerIndex = _rand;
+      };
+    } forEach SHK_randstapos_selected;
+
+    if (!(isNil "_markerIndex") && (_markerIndex > 0)) then {
+      _oldPos = getPos player;
+      _newPos = getMarkerPos (format ["startpos_%1_%2", _s, _markerIndex]);
+      [player, _oldPos, _newPos] call SHK_fnc_move;
+    } else {
+      format ["_markerIndex = %1", _markerIndex] call BIS_fnc_log;
+    };
 
     {
       if ((tolower((_x select 0)) == _s) && (count _x > 3)) exitwith {
