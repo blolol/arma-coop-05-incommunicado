@@ -56,6 +56,10 @@ _missionTargetCount = [2, 4] call BIS_fnc_randomInt;
 _missionTargets = [_availableTargets, 0, (_missionTargetCount - 1)] call BIS_fnc_subSelect;
 
 // Assign tasks
+private ["_tasks", "_notes"];
+_tasks = [];
+_notes = [];
+
 {
 	private ["_targetGroup", "_targetGroupDesc", "_targetGroupSites"];
 	_targetGroup = _x;
@@ -84,8 +88,8 @@ _missionTargets = [_availableTargets, 0, (_missionTargetCount - 1)] call BIS_fnc
 	_taskDesc = _taskDesc + (format [" at grid <marker name='%1'>%2</marker>.", _taskDestMarkerName, (mapGridPosition _targetGroupLoc)]);
 
 	private ["_task"];
-	_task = [_taskOwner, _taskName, [_taskDesc, _taskTitle, _taskMarker], _taskDest, _taskState, _taskPriority] call BIS_fnc_taskCreate;
-	missionNamespace setVariable [_taskName, _task];
+	_task = [_taskName, _taskTitle, _taskDesc, WEST, [], "created", _taskDest];
+	[_tasks, _task] call BIS_fnc_arrayPush;
 
 	{
 		private ["_targetSite"];
@@ -106,6 +110,8 @@ _missionTargets = [_availableTargets, 0, (_missionTargetCount - 1)] call BIS_fnc
 		};
 	} forEach _targetGroupSites;
 } forEach _missionTargets;
+
+[_tasks, _notes] execVM "vendor\shk_taskmaster.sqf";
 
 // Choose spawn point and move players to it
 _spawnPoint = getMarkerPos (["spawn_0", "spawn_1"] call BIS_fnc_selectRandom);
