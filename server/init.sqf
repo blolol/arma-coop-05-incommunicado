@@ -114,5 +114,5 @@ _notes = [];
 [_tasks, _notes] execVM "vendor\shk_taskmaster.sqf";
 
 // Choose spawn point and move players to it
-_spawnPoint = getMarkerPos (["spawn_0", "spawn_1"] call BIS_fnc_selectRandom);
+_spawnPoint = getMarkerPos (["spawn_0", "spawn_1", "spawn_2"] call BIS_fnc_selectRandom);
 { _x setPos _spawnPoint } forEach (units (group bluforTeamLeader));

@@ -6,13 +6,15 @@ class Mission
 		"a3_map_altis",
 		"A3_Characters_F_BLUFOR",
 		"A3_Modules_F_Sites",
-		"A3_Boat_F_Boat_Transport_01"
+		"A3_Boat_F_Boat_Transport_01",
+		"A3_Soft_F_Offroad_01"
 	};
 	addOnsAuto[]=
 	{
 		"A3_Characters_F_BLUFOR",
 		"A3_Modules_F_Sites",
 		"A3_Boat_F_Boat_Transport_01",
+		"A3_Soft_F_Offroad_01",
 		"a3_map_altis"
 	};
 	randomSeed=11112023;
@@ -39,7 +41,7 @@ class Mission
 	};
 	class Groups
 	{
-		items=3;
+		items=4;
 		class Item0
 		{
 			side="WEST";
@@ -271,25 +273,138 @@ class Mission
 				};
 			};
 		};
+		class Item3
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={9704.0234,9.2525167,22319.223};
+					class args
+					{
+						items=10;
+						class Item0
+						{
+							value="Red";
+							parentCls="Site_OPFOR";
+							typeName="faction";
+						};
+						class Item1
+						{
+							value="Military_OP";
+							parentCls="Site_OPFOR";
+							typeName="siteType";
+						};
+						class Item2
+						{
+							value="";
+							parentCls="Site_OPFOR";
+							typeName="description";
+						};
+						class Item3
+						{
+							value="ellipse";
+							parentCls="Site_OPFOR";
+							typeName="shape";
+						};
+						class Item4
+						{
+							value="20";
+							parentCls="Site_OPFOR";
+							typeName="axisA";
+						};
+						class Item5
+						{
+							value="20";
+							parentCls="Site_OPFOR";
+							typeName="axisB";
+						};
+						class Item6
+						{
+							value="No";
+							parentCls="Site_OPFOR";
+							typeName="interactive";
+						};
+						class Item7
+						{
+							value="Disabled";
+							parentCls="Site_OPFOR";
+							typeName="fastTravel";
+						};
+						class Item8
+						{
+							value="0.5";
+							parentCls="Site_OPFOR";
+							typeName="buildingOccupationIndex";
+						};
+						class Item9
+						{
+							value="TRUE";
+							parentCls="Site_OPFOR";
+							typeName="conditionOfPresence";
+						};
+					};
+					id=7;
+					side="LOGIC";
+					vehicle="Site_OPFOR";
+					leader=1;
+					lock="UNLOCKED";
+					skill=0.60000002;
+				};
+			};
+		};
 	};
 	class Vehicles
 	{
-		items=1;
+		items=4;
 		class Item0
 		{
 			position[]={8812.6719,0,25040.994};
 			azimut=-288.08209;
 			special="NONE";
-			id=7;
+			id=8;
 			side="EMPTY";
 			vehicle="B_Boat_Transport_01_F";
 			leader=1;
 			skill=0.46666664;
 		};
+		class Item1
+		{
+			position[]={20590.252,51.291409,20110.857};
+			azimut=-109.94385;
+			special="NONE";
+			id=9;
+			side="EMPTY";
+			vehicle="C_Offroad_01_F";
+			leader=1;
+			skill=0.46666664;
+		};
+		class Item2
+		{
+			position[]={23005.488,48.321739,7259.4854};
+			azimut=-283.55664;
+			special="NONE";
+			id=10;
+			side="EMPTY";
+			vehicle="C_Offroad_01_F";
+			leader=1;
+			skill=0.46666664;
+		};
+		class Item3
+		{
+			position[]={9704.1885,2.6074047,22310.752};
+			azimut=245.87489;
+			id=11;
+			side="EMPTY";
+			vehicle="C_Offroad_01_F";
+			skill=0.60000002;
+		};
 	};
 	class Markers
 	{
-		items=11;
+		items=12;
 		class Item0
 		{
 			position[]={4585.0996,261.96136,15400.311};
@@ -368,6 +483,14 @@ class Mission
 			text="Spawn #1";
 			type="Empty";
 			angle=-387.80289;
+		};
+		class Item11
+		{
+			position[]={9830.542,1.9942334,22327.754};
+			name="spawn_2";
+			text="Spawn #2";
+			type="Empty";
+			angle=14.2844;
 		};
 	};
 };
