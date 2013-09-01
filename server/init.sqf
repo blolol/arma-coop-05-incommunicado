@@ -52,7 +52,7 @@ _availableTargets = [
 ] call BIS_fnc_arrayShuffle;
 
 // Choose mission targets
-_missionTargetCount = [2, 4] call BIS_fnc_randomInt;
+_missionTargetCount = [3, 4] call BIS_fnc_randomInt;
 _missionTargets = [_availableTargets, 0, (_missionTargetCount - 1)] call BIS_fnc_subSelect;
 
 // Assign tasks
