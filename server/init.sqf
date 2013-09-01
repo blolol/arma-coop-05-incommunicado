@@ -119,57 +119,14 @@ _objectives = []; // Objectives tracked by the server
 			_target = nearestObject [_targetSiteLoc, _targetSiteClass];
 
 			if (!(isNull _target)) then {
-				// Create a unique ID for the target
-				private ["_id"];
-				_id = _target call BLOL_fnc_targets_hash;
-
-				// Add an event handler to the target so we're notified when it's destroyed
 				_target addEventHandler ["killed", {
-					// Mark this target as destroyed
-					private ["_target", "_id", "_objectives"];
-					_target = _this select 0;
-					_id = _target call BLOL_fnc_targets_hash;
-					_objectives = missionNamespace getVariable "BLOL_objectives";
-
-					{
-						_objective = _x;
-						_objectiveTargets = _objective select 1;
-
-						{
-							_objectiveTarget = _x;
-							_objectiveTargetId = _objectiveTarget select 0;
-
-							if (_objectiveTargetId == _id) then {
-								_objectiveTarget set [1, true];
-							};
-						} forEach _objectiveTargets;
-					} forEach _objectives;
-
-					missionNamespace setVariable ["BLOL_objectives", _objectives];
-
-					// Check to see if any objectives have been completed
-					private ["_objectives"];
-					_objectives = missionNamespace getVariable "BLOL_objectives";
-
-					{
-						_objective = _x;
-						_objectiveTaskName = _objective select 0;
-						_objectiveTargets = _objective select 1;
-						_objectiveComplete = true;
-
-						{
-							_objectiveTarget = _x;
-							_objectiveTargetDestroyed = _objectiveTarget select 1;
-							_objectiveComplete = _objectiveComplete && _objectiveTargetDestroyed;
-						} forEach _objectiveTargets;
-
-						if (_objectiveComplete) then {
-							[_objectiveTaskName, "succeeded"] call SHK_Taskmaster_upd;
-						};
-					} forEach _objectives;
+					(_this select 0) call BLOL_fnc_targets_markDestroyed;
+					[] call BLOL_fnc_objectives_checkForCompletion;
 				}];
 
 				// Track the state of the target in the server-side objectives
+				private ["_id"];
+				_id = _target call BLOL_fnc_targets_hash;
 				[_objectiveTargets, [_id, false]] call BIS_fnc_arrayPush;
 			} else {
 				format ["Could not find %1 near %2", _targetSiteClass, _targetSiteMarker]
