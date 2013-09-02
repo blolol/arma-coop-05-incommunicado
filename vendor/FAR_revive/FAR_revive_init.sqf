@@ -7,13 +7,13 @@
 //------------------------------------------//
 
 // Seconds until unconscious unit bleeds out and dies. Set to 0 to disable.
-FAR_BleedOut = 500;	
+FAR_BleedOut = 300;	
 
 // Enable teamkill notifications
 FAR_EnableDeathMessages = true;
 
 // If set to false, only medics will be able to revive
-FAR_CasualMode = false;
+FAR_CasualMode = true;
 
 //------------------------------------------//
 
@@ -40,8 +40,6 @@ if (isDedicated) exitWith {};
 	"FAR_deathMessage" addPublicVariableEventHandler FAR_public_EH;
 	
 	[] spawn FAR_Player_Init;
-	
-	hintSilent format["Farooq's Revive %1 is initialized.", SCRIPT_VERSION];
 
 	// Event Handlers
 	player addEventHandler 

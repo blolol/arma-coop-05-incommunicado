@@ -11,6 +11,12 @@ if (hasInterface) then {
 };
 
 /**
+ * Set up Farooq's Revive.
+**/
+
+call (compile (preprocessFileLineNumbers "vendor\FAR_revive\FAR_revive_init.sqf"));
+
+/**
  * Choose spawn point and move players to it.
 **/
 

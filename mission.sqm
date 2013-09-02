@@ -95,7 +95,7 @@ class Mission
 					special="NONE";
 					id=3;
 					side="WEST";
-					vehicle="B_medic_F";
+					vehicle="B_soldier_M_F";
 					player="PLAY CDG";
 					skill=0.60000002;
 					text="player_4";
