@@ -178,3 +178,11 @@ missionNamespace setVariable ["BLOL_objectives", _objectives];
 	1, // Patrol type
 	false // Multiplayer sync
 ] execVM "vendor\lv\ambientCombat.sqf";
+
+/**
+ * Set up periodic enemy paradrops.
+**/
+
+private ["_paradrops"];
+_paradrops = compile (preprocessFileLineNumbers "server\lib\paradrops.sqf");
+_paradrops spawn _paradrops;
