@@ -2,8 +2,9 @@
  * Checks to see if any objectives have been completed, and completes their associated tasks.
 **/
 
-private ["_objectives"];
+private ["_objectives", "_objectivesComplete"];
 _objectives = missionNamespace getVariable "BLOL_objectives";
+_objectivesComplete = true;
 
 {
 	private ["_objective", "_objectiveTaskName", "_objectiveTargets", "_objectiveComplete"];
@@ -22,4 +23,13 @@ _objectives = missionNamespace getVariable "BLOL_objectives";
 	if (_objectiveComplete) then {
 		[_objectiveTaskName, "succeeded"] call SHK_Taskmaster_upd;
 	};
+
+	_objectivesComplete = _objectivesComplete && _objectiveComplete;
 } forEach _objectives;
+
+if (_objectivesComplete) then {
+	[] spawn {
+		sleep 5;
+		["End1", "BIS_fnc_endMission"] call BIS_fnc_MP;
+	};
+};

@@ -23,6 +23,15 @@ class Header {
 	maxPlayers = 5;
 };
 
+class CfgDebriefing {
+	class End1 {
+		subtitle = "Enemy communications neutralized";
+		description = "You successfully knocked out the enemy's communications infrastructure, granting our main invasion force the upper hand.";
+		picture = "loc_Transmitter";
+		pictureColor[] = { 0.0, 0.3, 0.6, 1 };
+	};
+};
+
 class CfgFunctions {
 	class BLOL {
 		#include "server\include\functions.hpp"

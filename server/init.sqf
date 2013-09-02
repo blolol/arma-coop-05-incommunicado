@@ -148,16 +148,38 @@ missionNamespace setVariable ["BLOL_objectives", _objectives];
 [_tasks, _notes] call (compile (preprocessFileLineNumbers "vendor\shk_taskmaster.sqf"));
 
 /**
- * Give demolition gear to players.
+ * Set up player loadout.
 **/
 
+private ["_teamLeader", "_autorifleman", "_atRifleman", "_grenadier", "_marksman", "_fireteam"];
+_teamLeader = player_0;
+_autorifleman = player_1;
+_atRifleman = player_2;
+_grenadier = player_3;
+_marksman = player_4;
+_fireteam = [_teamLeader, _autorifleman, _atRifleman, _grenadier, _marksman];
+
+// Give everyone binoculars.
 {
 	private ["_unit"];
 	_unit = _x;
 
-	_unit addBackpack "B_AssaultPack_Base";
-	{ _unit addMagazine "DemoCharge_Remote_Mag" } forEach [1, 2, 3];
-} forEach (units bluforFireTeam);
+	_unit addWeapon "Binocular";
+} forEach _fireteam;
+
+// Give everyone except the AT rifleman some demolitions gear.
+{
+	private ["_unit"];
+	_unit = _x;
+
+	if (isNull (unitBackpack _unit)) then {
+		_unit addBackpack "B_AssaultPack_Base";
+	};
+
+	for "_i" from 1 to 3 do {
+		_unit addMagazine "DemoCharge_Remote_Mag";
+	};
+} forEach [_teamLeader, _autorifleman, _grenadier, _marksman];
 
 /**
  * Set up ambient combat.
