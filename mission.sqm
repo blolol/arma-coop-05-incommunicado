@@ -23,13 +23,13 @@ class Mission
 	randomSeed=11112023;
 	class Intel
 	{
-		briefingName="COOP 05 Dynamic Loop";
-		overviewText="Destroy the enemy's communications towers on the island of Altis";
+		briefingName="COOP 05 Incommunicado";
+		overviewText="Knock out enemy communications ahead of a larger assault.";
 		startWeather=0.29999998;
 		startFog=0.39999998;
 		startWind=0.099999994;
 		startWaves=0.099999994;
-		forecastWeather=0.29999998;
+		forecastWeather=0.099999994;
 		forecastWind=0.099999994;
 		forecastWaves=0.099999994;
 		forecastLightnings=0.099999994;

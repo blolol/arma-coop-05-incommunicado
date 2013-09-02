@@ -2,9 +2,14 @@
  * Mission configuration.
 **/
 
-onLoadName = "Dynamic Loop";
-onLoadMission = "Destroy the enemy's communications towers.";
 author = "Raws";
+
+overviewText = "Knock out enemy communications ahead of a larger assault.";
+overviewPicture = "resources\overview.jpg";
+
+onLoadName = "COOP 05 Incommunicado";
+onLoadMission = "Knock out enemy communications ahead of a larger assault.";
+loadScreen = "resources\overview.jpg";
 
 class Header {
 	gameType = COOP;
