@@ -188,7 +188,7 @@ _fireteam = [_teamLeader, _autorifleman, _atRifleman, _grenadier, _marksman];
 [
 	450, // Min range
 	900, // Max range
-	30, // Min spawn delay
+	120, // Min spawn delay
 	300, // Max spawn delay
 	6, // Max AI groups alive at once
 	[0.5, 1, 0], // West, east, independent spawn ratios
