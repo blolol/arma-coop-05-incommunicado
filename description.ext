@@ -11,6 +11,12 @@ onLoadName = "COOP 05 Incommunicado";
 onLoadMission = "Knock out enemy communications ahead of a larger assault.";
 loadScreen = "resources\overview.jpg";
 
+respawn = 3;
+respawnDelay = 15;
+respawnDialog = 0;
+respawnTemplates[] = { "Base", "Counter" };
+respawnOnStart = 0;
+
 class Header {
 	gameType = COOP;
 	minPlayers = 1;
