@@ -176,7 +176,7 @@ missionNamespace setVariable ["BLOL_objectives", _objectives];
 	1500, // Despawn distance
 	nil, // Unit init
 	1, // Patrol type
-	false // Multiplayer sync
+	true // Multiplayer sync
 ] execVM "vendor\lv\ambientCombat.sqf";
 
 /**
