@@ -54,7 +54,7 @@ class Mission
 				class Item0
 				{
 					position[]={23252.822,10.597979,7388.2896};
-					azimut=-94.738548;
+					azimut=-94.738503;
 					special="NONE";
 					id=0;
 					side="WEST";
@@ -62,44 +62,48 @@ class Mission
 					player="PLAY CDG";
 					rank="CORPORAL";
 					skill=0.33333331;
+					text="player_1";
 				};
 				class Item1
 				{
 					position[]={23253.445,10.959127,7383.4653};
-					azimut=-94.738548;
+					azimut=-94.738503;
 					special="NONE";
 					id=1;
 					side="WEST";
 					vehicle="B_Soldier_GL_F";
 					player="PLAY CDG";
 					skill=0.2;
+					text="player_3";
 				};
 				class Item2
 				{
 					position[]={23254.645,8.669754,7390.7837};
-					azimut=-94.738548;
+					azimut=-94.738503;
 					special="NONE";
 					id=2;
 					side="WEST";
 					vehicle="B_soldier_LAT_F";
 					player="PLAY CDG";
 					skill=0.2;
+					text="player_2";
 				};
 				class Item3
 				{
 					position[]={23256.145,9.4411163,7381.0547};
-					azimut=-94.738548;
+					azimut=-94.738503;
 					special="NONE";
 					id=3;
 					side="WEST";
 					vehicle="B_medic_F";
 					player="PLAY CDG";
 					skill=0.60000002;
+					text="player_4";
 				};
 				class Item4
 				{
 					position[]={23250.709,12.529377,7385.6509};
-					azimut=-94.738472;
+					azimut=-94.738503;
 					special="NONE";
 					id=4;
 					side="WEST";
@@ -108,6 +112,7 @@ class Mission
 					leader=1;
 					rank="SERGEANT";
 					skill=0.46666664;
+					text="player_0";
 					init="bluforFireTeam = group this";
 				};
 			};
