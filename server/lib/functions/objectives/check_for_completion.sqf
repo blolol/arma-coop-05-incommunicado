@@ -2,8 +2,7 @@
  * Checks to see if any objectives have been completed, and completes their associated tasks.
 **/
 
-private ["_objectives", "_objectivesComplete"];
-_objectives = missionNamespace getVariable "BLOL_objectives";
+private ["_objectivesComplete"];
 _objectivesComplete = true;
 
 {
@@ -25,7 +24,7 @@ _objectivesComplete = true;
 	};
 
 	_objectivesComplete = _objectivesComplete && _objectiveComplete;
-} forEach _objectives;
+} forEach BLOL_objectives;
 
 if (_objectivesComplete) then {
 	[] spawn {

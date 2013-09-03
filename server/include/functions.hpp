@@ -23,6 +23,11 @@ class Server {
 		description = "Checks to see if any objectives have been completed";
 	};
 
+	class objectives_choose {
+		file = "server\lib\functions\objectives\choose.sqf";
+		description = "Choose mission objectives";
+	};
+
 	class players_all {
 		file = "server\lib\functions\players\all.sqf";
 		description = "Returns an array of all live, non-captive players";
