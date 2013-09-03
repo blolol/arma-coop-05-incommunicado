@@ -154,11 +154,11 @@ missionNamespace setVariable ["BLOL_objectives", _objectives];
 [
 	450, // Min range
 	900, // Max range
-	120, // Min spawn delay
-	300, // Max spawn delay
+	(if (BLOL_debug) then { 10 } else { 120 }), // Min spawn delay
+	(if (BLOL_debug) then { 10 } else { 300 }), // Max spawn delay
 	6, // Max AI groups alive at once
 	[0.5, 1, 0], // West, east, independent spawn ratios
-	[player_0, player_1, player_2, player_3, player_4], // Center units
+	[], // Center units
 	"default", // AI skill
 	1, // AI communication
 	1500, // Despawn distance

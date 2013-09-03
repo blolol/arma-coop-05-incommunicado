@@ -5,7 +5,7 @@
 private ["_paradrops"];
 _paradrops = _this;
 
-sleep ([180, 480] call BIS_fnc_randomInt);
+sleep ((if (BLOL_debug) then { [10, 15] } else { [180, 480] }) call BIS_fnc_randomInt);
 
 [
 	nil, // Target location
