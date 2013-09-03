@@ -54,7 +54,7 @@ class Mission
 				class Item0
 				{
 					position[]={23264.762,1.9892502,7292.7769};
-					azimut=-284.39655;
+					azimut=-284.397;
 					special="NONE";
 					id=0;
 					side="WEST";
@@ -64,12 +64,12 @@ class Mission
 					rank="SERGEANT";
 					skill=0.46666664;
 					text="player_0";
-					init="bluforFireTeam = group this";
+					init="bluforFireTeam = group this; this addWeapon ""Binocular""; this addBackpack ""B_AssaultPack_Base""; { this addMagazine ""DemoCharge_Remote_Mag"" } forEach [1, 2, 3];";
 				};
 				class Item1
 				{
 					position[]={23263.117,2.3152099,7289.8198};
-					azimut=-284.39655;
+					azimut=-284.397;
 					special="NONE";
 					id=1;
 					side="WEST";
@@ -77,11 +77,12 @@ class Mission
 					player="PLAY CDG";
 					skill=0.33333331;
 					text="player_1";
+					init="this addWeapon ""Binocular""; this addBackpack ""B_AssaultPack_Base""; { this addMagazine ""DemoCharge_Remote_Mag"" } forEach [1, 2, 3];";
 				};
 				class Item2
 				{
 					position[]={23261.74,2.4934523,7287.0513};
-					azimut=-284.39655;
+					azimut=-284.397;
 					special="NONE";
 					id=2;
 					side="WEST";
@@ -89,11 +90,12 @@ class Mission
 					player="PLAY CDG";
 					skill=0.2;
 					text="player_2";
+					init="this addWeapon ""Binocular"";";
 				};
 				class Item3
 				{
 					position[]={23261.695,2.8044453,7294.4668};
-					azimut=-284.39655;
+					azimut=-284.397;
 					special="NONE";
 					id=3;
 					side="WEST";
@@ -101,11 +103,12 @@ class Mission
 					player="PLAY CDG";
 					skill=0.2;
 					text="player_3";
+					init="this addWeapon ""Binocular""; this addBackpack ""B_AssaultPack_Base""; { this addMagazine ""DemoCharge_Remote_Mag"" } forEach [1, 2, 3];";
 				};
 				class Item4
 				{
 					position[]={23258.629,3.6029463,7296.3979};
-					azimut=-284.39655;
+					azimut=-284.397;
 					special="NONE";
 					id=4;
 					side="WEST";
@@ -113,6 +116,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0.60000002;
 					text="player_4";
+					init="this addWeapon ""Binocular""; this addBackpack ""B_AssaultPack_Base""; { this addMagazine ""DemoCharge_Remote_Mag"" } forEach [1, 2, 3];";
 				};
 			};
 		};
