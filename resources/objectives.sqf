@@ -28,7 +28,7 @@
 	[
 		"Kavala radio towers",
 		"the two radio towers <marker name='%1'>north of Kavala<marker>",
-		"static_tower_0",
+		"static_objective_0",
 		[
 			["static", "static_tower_0", "Land_TTowerBig_1_F"],
 			["static", "static_tower_1", "Land_TTowerBig_2_F"]
@@ -45,7 +45,7 @@
 	[
 		"Sofia radio towers",
 		"the two radio towers <marker name='%1'>between Sofia and Molos</marker>",
-		"static_tower_3",
+		"static_objective_2",
 		[
 			["static", "static_tower_3", "Land_TTowerBig_2_F"],
 			["static", "static_tower_4", "Land_TTowerBig_2_F"]
@@ -62,7 +62,7 @@
 	[
 		"Panagia radio towers",
 		"the two radio towers <marker name='%1'>northwest of Panagia</marker>",
-		"static_tower_6",
+		"static_objective_4",
 		[
 			["static", "static_tower_6", "Land_TTowerBig_2_F"],
 			["static", "static_tower_7", "Land_TTowerBig_2_F"]

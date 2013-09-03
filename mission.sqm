@@ -599,7 +599,7 @@ class Mission
 	};
 	class Markers
 	{
-		items=13;
+		items=15;
 		class Item0
 		{
 			position[]={4585.0996,261.96136,15400.311};
@@ -667,8 +667,8 @@ class Mission
 		class Item9
 		{
 			position[]={4557.8511,262.78333,15413.837};
-			name="static_group_0";
-			text="Static Group #0";
+			name="static_objective_0";
+			text="Static Objective #0";
 			type="Empty";
 		};
 		class Item10
@@ -694,6 +694,20 @@ class Mission
 			text="Spawn #3";
 			type="Empty";
 			angle=-246.26978;
+		};
+		class Item13
+		{
+			position[]={26375.811,61.825603,22175.809};
+			name="static_objective_2";
+			text="Static Objective #2";
+			type="Empty";
+		};
+		class Item14
+		{
+			position[]={19098.951,177.29886,9914.542};
+			name="static_objective_4";
+			text="Static Objective #4";
+			type="Empty";
 		};
 	};
 };
