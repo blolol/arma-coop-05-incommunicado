@@ -2,11 +2,11 @@
  * Garbage collects objects far away from players.
 **/
 
-private ["_garbageCollectionDistance", "_playableUnits", "_eligibleUnits", "_distantUnits"];
+private ["_garbageCollectionDistance", "_playableUnits", "_eligibleObjects", "_distantObjects"];
 _garbageCollectionDistance = [_this, 0, 1500, [0]] call BIS_fnc_param;
 _playableUnits = call BLOL_fnc_players_all;
-_eligibleUnits = (allUnits + allDead) - _playableUnits;
-_distantUnits = [];
+_eligibleObjects = (allUnits + allDead + vehicles) - _playableUnits;
+_distantObjects = [];
 
 {
 	private ["_unit", "_distanceToClosestPlayer"];
@@ -14,7 +14,7 @@ _distantUnits = [];
 	_distanceToClosestPlayer = [_unit, _playableUnits] call BLOL_fnc_players_closestDistanceToUnit;
 
 	if (_distanceToClosestPlayer >= _garbageCollectionDistance) then {
-		[_distantUnits, _unit] call BIS_fnc_arrayPush;
+		[_distantObjects, _unit] call BIS_fnc_arrayPush;
 
 		if (BLOL_debug) then {
 			diag_log (format ["[BLOL_fnc_gc_sweep] %1 is %2 meters from the closest player and " +
@@ -26,6 +26,6 @@ _distantUnits = [];
 				"will not be garbage collected", _unit, _distanceToClosestPlayer]);
 		};
 	};
-} forEach _eligibleUnits;
+} forEach _eligibleObjects;
 
-_distantUnits call BLOL_fnc_gc_mark;
+_distantObjects call BLOL_fnc_gc_mark;
