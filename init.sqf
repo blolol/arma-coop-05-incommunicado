@@ -5,34 +5,23 @@
 #define DEBUG false
 BLOL_debug = DEBUG || ((paramsArray select 0) > 0);
 
-/**
- * Set up SHK_Taskmaster.
-**/
-
+// Initialize SHK_Taskmaster
 call (compile (preprocessFileLineNumbers "vendor\shk_taskmaster.sqf"));
 
-/**
- * Kick off client- and server-specific initialization.
-**/
-
+// Initialize clients
 if (hasInterface) then {
 	execVM "client\init.sqf";
 };
 
+// Initialize server
 if (isServer) then {
 	execVM "server\init.sqf";
 };
 
-/**
- * Set up Farooq's Revive.
-**/
-
+// Initialize Farooq's Revive
 call (compile (preprocessFileLineNumbers "vendor\FAR_revive\FAR_revive_init.sqf"));
 
-/**
- * Choose spawn point and move players to it.
-**/
-
+// Choose spawn point
 private ["_spawnPointCount", "_spawnInclusionRadius", "_spawnMarkerOptions"];
 _spawnPointCount = 4;
 _spawnInclusionRadius = 3;

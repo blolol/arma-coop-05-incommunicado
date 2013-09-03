@@ -28,6 +28,11 @@ class Server {
 		description = "Choose mission objectives";
 	};
 
+	class objectives_init {
+		file = "server\lib\functions\objectives\init.sqf";
+		description = "Initialize mission objectives";
+	};
+
 	class players_all {
 		file = "server\lib\functions\players\all.sqf";
 		description = "Returns an array of all live, non-captive players";
