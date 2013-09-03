@@ -3,8 +3,13 @@
 **/
 
 private ["_unit", "_players", "_distances"];
-_unit = _this;
-_players = call BLOL_fnc_players_all;
+_unit = _this select 0;
+
+_players = if ((count _this) > 1) then {
+	_this select 1;
+} else {
+	call BLOL_fnc_players_all;
+};
 
 if (BLOL_debug) then {
 	diag_log (format ["[BLOL_fnc_closestDistanceToUnit] Unit: %1 %2", (typename _unit), _unit]);

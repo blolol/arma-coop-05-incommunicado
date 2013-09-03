@@ -3,9 +3,19 @@
 **/
 
 class Server {
-	class gc_despawnEventually {
-		file = "server\lib\functions\gc\despawn_eventually.sqf";
-		description = "Despawns a unit when players are far enough away from it";
+	class gc_init {
+		file = "server\lib\functions\gc\init.sqf";
+		description = "Initializes periodic garbage collection of objects far away from players";
+	};
+
+	class gc_mark {
+		file = "server\lib\functions\gc\mark.sqf";
+		description = "Marks an object for garbage collection";
+	};
+
+	class gc_sweep {
+		file = "server\lib\functions\gc\sweep.sqf";
+		description = "Garbage collects entities far away from players";
 	};
 
 	class objectives_checkForCompletion {

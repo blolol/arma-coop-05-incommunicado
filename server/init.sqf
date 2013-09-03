@@ -176,15 +176,7 @@ _paradrops = compile (preprocessFileLineNumbers "server\lib\paradrops.sqf");
 _paradrops spawn _paradrops;
 
 /**
- * Eventually garbage collect entities near spawn positions.
+ * Initialize garbage collection of objects distant from players.
 **/
 
-[] spawn {
-	sleep 5; // Give units a chance to spawn
-
-	{
-		if (!(isPlayer _x)) then {
-			[_x] call BLOL_fnc_gc_despawnEventually;
-		};
-	} forEach allUnits;
-};
+[10, 1500] spawn BLOL_fnc_gc_init;
