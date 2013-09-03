@@ -19,7 +19,7 @@ _maxDelay = if (BLOL_debug) then { 30 } else { 300 };
 
 _maxGroups = 6;
 _sideRatios = [
-	0.5, // West
+	0.0, // West
 	1.0, // East
 	0.0  // Independent
 ];
