@@ -162,7 +162,7 @@ missionNamespace setVariable ["BLOL_objectives", _objectives];
 	"default", // AI skill
 	1, // AI communication
 	1500, // Despawn distance
-	nil, // Unit init
+	(if (BLOL_debug) then { "diag_log (format ['Spawned ambient combat unit: %1', this]);" } else { nil }), // Unit init
 	1, // Patrol type
 	true // Multiplayer sync
 ] execVM "vendor\lv\ambientCombat.sqf";

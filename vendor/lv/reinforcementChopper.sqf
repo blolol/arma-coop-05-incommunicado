@@ -215,6 +215,16 @@ if(_precise)then{_man setBehaviour "CARELESS";};
 			deleteVehicle _man;
 			sleep 15;
 			deleteVehicle _heli;
+
+			/* BEGIN BLOLOL EDIT */
+			if (!(isNil "BLOL_paradrops")) then {
+				BLOL_paradrops = BLOL_paradrops - 1;
+
+				if (BLOL_debug) then {
+					diag_log (format ["Despawned paradrop units. Active paradrops: %1", BLOL_paradrops]);
+				};
+			};
+			/* END BLOLOL EDIT */
 		};
 	};
 };
