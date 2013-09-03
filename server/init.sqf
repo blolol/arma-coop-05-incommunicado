@@ -14,4 +14,4 @@ _paradrops = compile (preprocessFileLineNumbers "server\lib\paradrops.sqf");
 _paradrops spawn _paradrops;
 
 // Initialize garbage collection
-[30, 1500] spawn BLOL_fnc_gc_init;
+[30, 2500] spawn BLOL_fnc_gc_init;
