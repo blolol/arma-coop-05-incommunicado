@@ -17,7 +17,7 @@ _maxRange = 900;
 _minDelay = if (BLOL_debug) then { 10 } else { 120 };
 _maxDelay = if (BLOL_debug) then { 30 } else { 300 };
 
-_maxGroups = 6;
+_maxGroups = 3;
 _sideRatios = [
 	0.0, // West
 	1.0, // East
