@@ -58,7 +58,7 @@ _tasks = []; // Tasks to distribute to clients
 			if (!(isNull _target)) then {
 				_target addEventHandler ["killed", {
 					(_this select 0) call BLOL_fnc_targets_markDestroyed;
-					[] call BLOL_fnc_objectives_checkForCompletion;
+					call BLOL_fnc_objectives_checkForCompletion;
 				}];
 
 				// Track the state of the target in the server-side objectives
