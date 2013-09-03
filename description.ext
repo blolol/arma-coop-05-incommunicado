@@ -41,8 +41,8 @@ class CfgFunctions {
 class Params {
 	class Debug {
 		title = "Debug Mode";
-		values[] = { 1, 0 };
-		texts[] = { "On", "Off" };
+		values[] = { 0, 1 };
+		texts[] = { "Off", "On" };
 		default = 0;
 	};
 };
