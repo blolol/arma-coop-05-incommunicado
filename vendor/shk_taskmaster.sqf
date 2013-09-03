@@ -156,7 +156,6 @@
     0.11  Fixed: Missed !isnull player check, which caused problems in marker handling.
 */
 #define FACTIONLIST ["BLU_F","OPF_F","IND_F","IND_G_F","CIV_F"]
-DEBUG = false;
 /* == COMMON =================================================================================== */
   SHK_Taskmaster_initDone = false;
   SHK_Taskmaster_add = {
@@ -209,7 +208,7 @@ DEBUG = false;
     _marker = _this select 4;
     _state = _this select 5;
     _dest = _this select 6;
-    if DEBUG then { diag_log format ["SHK_Taskmaster> addTask: %1, %2, %3, %4",_name,_marker,_state,_dest]};
+    if BLOL_debug then { diag_log format ["SHK_Taskmaster> addTask: %1, %2, %3, %4",_name,_marker,_state,_dest]};
     {
       if ( [_x,(_this select 3)] call SHK_Taskmaster_checkCond ) then {
         _handle = _x createsimpletask [_name];
@@ -301,7 +300,7 @@ DEBUG = false;
     _unit = _this select 0;
     _cond = _this select 1;
     if (!isNil "_cond") then {
-      if DEBUG then { diag_log format ["SHK_Taskmaster> typename condition: %1",typename _cond]};
+      if BLOL_debug then { diag_log format ["SHK_Taskmaster> typename condition: %1",typename _cond]};
       switch (typename _cond) do {
         case (typename grpNull): { (_unit in (units _cond)) };
         case (typename objNull): { _unit == _cond };
@@ -356,11 +355,11 @@ DEBUG = false;
       _name = _x select 0;
       if (_name call SHK_Taskmaster_hasTaskLocal) then {
         if ([_name,(_x select 5)] call SHK_Taskmaster_hasStateChanged) then {
-          if DEBUG then { diag_log format ["SHK_Taskmaster> handleEvent calling updateTask: %1",_name]};
+          if BLOL_debug then { diag_log format ["SHK_Taskmaster> handleEvent calling updateTask: %1",_name]};
           _x call SHK_Taskmaster_updateTask;
         };
       } else {
-        if DEBUG then { diag_log format ["SHK_Taskmaster> handleEvent calling addTask: %1",_name]};
+        if BLOL_debug then { diag_log format ["SHK_Taskmaster> handleEvent calling addTask: %1",_name]};
         _x call SHK_Taskmaster_addTask;
       };
     } foreach _this;
@@ -502,7 +501,7 @@ DEBUG = false;
                 
                 if (count _marker > 0) then {
                   if (_state in ["succeeded","failed","canceled"]) then {
-                    if DEBUG then { diag_log format ["SHK_Taskmaster> updateTask deleting marker: %1, state: %2",_marker,_state]};
+                    if BLOL_debug then { diag_log format ["SHK_Taskmaster> updateTask deleting marker: %1, state: %2",_marker,_state]};
                     if (typename (_marker select 0) == typename "") then {
                       _marker = [_marker];
                     };
@@ -536,7 +535,7 @@ SHK_Taskmaster_initServer = {
       };
     };
     publicvariable "SHK_Taskmaster_Tasks";
-    if DEBUG then {
+    if BLOL_debug then {
       diag_log "-- SHK_Taskmaster_Tasks --";
       diag_log SHK_Taskmaster_Tasks;
     };
@@ -571,7 +570,7 @@ SHK_Taskmaster_initClient = {
     [] spawn {
       waituntil {!isnull player};
       waituntil {!isnil "SHK_Taskmaster_Tasks"};
-      if DEBUG then {diag_log format ["SHK_Taskmaster> Tasks received first time: %1",SHK_Taskmaster_Tasks]};
+      if BLOL_debug then {diag_log format ["SHK_Taskmaster> Tasks received first time: %1",SHK_Taskmaster_Tasks]};
       private "_sh";
       _sh = SHK_Taskmaster_Tasks spawn SHK_Taskmaster_handleEvent;
       waituntil {scriptdone _sh};
