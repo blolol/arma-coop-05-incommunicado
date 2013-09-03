@@ -26,7 +26,7 @@ if (BLOL_paradrops < 2) then {
 		false, // Cycle target markers
 		([3, 8] call BIS_fnc_randomInt), // Number of infantry
 		"default", // AI skill
-		[false, true, false, false], // LZ smoke, cover smoke, flares, chemlights
+		[false, false, false, false], // LZ smoke, cover smoke, flares, chemlights
 		nil, // Group
 		nil, // Unit init
 		nil, // ID
