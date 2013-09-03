@@ -153,7 +153,7 @@ if (hasInterface) then {
       _newPos = getMarkerPos (format ["startpos_%1_%2", _s, _markerIndex]);
       [player, _oldPos, _newPos] call SHK_fnc_move;
 
-      _marker = createMarkerLocal ["afoijalskdjf", _newPos];
+      _marker = createMarkerLocal ["startpos", _newPos];
       _marker setMarkerShapeLocal "ICON";
       _marker setMarkerTypeLocal "mil_start";
       _marker setMarkerColorLocal "ColorGreen";
