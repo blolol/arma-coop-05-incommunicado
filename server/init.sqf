@@ -54,7 +54,7 @@ _availableTargets = [
 ] call BIS_fnc_arrayShuffle;
 
 private ["_missionTargetCount", "_missionTargets"];
-_missionTargetCount = [3, 4] call BIS_fnc_randomInt;
+_missionTargetCount = (if (BLOL_debug) then { [1, 1] } else { [3, 4] }) call BIS_fnc_randomInt;
 _missionTargets = [_availableTargets, 0, (_missionTargetCount - 1)] call BIS_fnc_subSelect;
 
 /**
@@ -145,7 +145,7 @@ _objectives = []; // Objectives tracked by the server
 missionNamespace setVariable ["BLOL_objectives", _objectives];
 
 // Distribute tasks and notes to clients using Taskmaster
-[_tasks, _notes] call (compile (preprocessFileLineNumbers "vendor\shk_taskmaster.sqf"));
+[_tasks, _notes] call SHK_Taskmaster_initServer;
 
 /**
  * Set up ambient combat.

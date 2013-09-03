@@ -37,3 +37,12 @@ class CfgFunctions {
 		#include "server\include\functions.hpp"
 	};
 };
+
+class Params {
+	class Debug {
+		title = "Debug Mode";
+		values[] = { 1, 0 };
+		texts[] = { "On", "Off" };
+		default = 0;
+	};
+};

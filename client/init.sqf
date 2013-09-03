@@ -3,4 +3,4 @@
 **/
 
 // Initialize SHK_taskmaster
-call (compile (preprocessFileLineNumbers "vendor\shk_taskmaster.sqf"));
+call SHK_Taskmaster_initClient;

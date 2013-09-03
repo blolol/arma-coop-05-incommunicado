@@ -520,62 +520,67 @@ DEBUG = false;
   };
 
 /* == SERVER =================================================================================== */
-if isserver then {
-  SHK_Taskmaster_Tasks = []; // Array member: ["Name","Title","Desc","Marker","State"]
-  /*
-    Iterate through the tasks received from init.sqf and add them to an array. Then send it to clients.
-  */
-  if (!isnil "_this") then {
-    if (count _this > 0) then {
-      private ["_task","_tasks","_i"];
-      _tasks = _this select 0;
-      for [{_i=(count _tasks - 1)},{_i>-1},{_i=_i-1}] do {
-        (_tasks select _i) call SHK_Taskmaster_add;
+SHK_Taskmaster_initServer = {
+  if isserver then {
+    SHK_Taskmaster_Tasks = []; // Array member: ["Name","Title","Desc","Marker","State"]
+    /*
+      Iterate through the tasks received from init.sqf and add them to an array. Then send it to clients.
+    */
+    if (!isnil "_this") then {
+      if (count _this > 0) then {
+        private ["_task","_tasks","_i"];
+        _tasks = _this select 0;
+        for [{_i=(count _tasks - 1)},{_i>-1},{_i=_i-1}] do {
+          (_tasks select _i) call SHK_Taskmaster_add;
+        };
       };
     };
-  };
-  publicvariable "SHK_Taskmaster_Tasks";
-  if DEBUG then {
-    diag_log "-- SHK_Taskmaster_Tasks --";
-    diag_log SHK_Taskmaster_Tasks;
-  };
-  
-};
-/* == CLIENT =================================================================================== */
-if !isdedicated then {
-  SHK_Taskmaster_showHints = false;
-  SHK_Taskmaster_TasksLocal = []; // Array member: ["TaskName","TaskState",TaskHandles]
-  /*
-    If any notes given in init.sqf, simply add them.
-  */
-  if (!isnil "_this") then {
-    if (count _this > 1) then {
-      private ["_notes","_i"];
-      _notes = _this select 1;
-      for [{_i=(count _notes - 1)},{_i>-1},{_i=_i-1}] do {
-        (_notes select _i) call SHK_Taskmaster_addNote;
-      };
+    publicvariable "SHK_Taskmaster_Tasks";
+    if DEBUG then {
+      diag_log "-- SHK_Taskmaster_Tasks --";
+      diag_log SHK_Taskmaster_Tasks;
     };
-  };
-  /*
-    Initially wait for server to send the task list for briefing. After briefing is created, add
-    an eventhandler to catch the updated task list server might send.
     
-    Wait for briefing tasks to be created before enabling taskhints. This prevents hints from briefing tasks
-    from being spammed at the start of the mission.
-  */
-  [] spawn {
-    waituntil {!isnull player};
-    waituntil {!isnil "SHK_Taskmaster_Tasks"};
-    if DEBUG then {diag_log format ["SHK_Taskmaster> Tasks received first time: %1",SHK_Taskmaster_Tasks]};
-    private "_sh";
-    _sh = SHK_Taskmaster_Tasks spawn SHK_Taskmaster_handleEvent;
-    waituntil {scriptdone _sh};
-    SHK_Taskmaster_showHints = true;
-    SHK_Taskmaster_initDone = true;
+  };
+};
 
-    "SHK_Taskmaster_Tasks" addpublicvariableeventhandler {
-      (_this select 1) spawn SHK_Taskmaster_handleEvent;
+/* == CLIENT =================================================================================== */
+SHK_Taskmaster_initClient = {
+  if !isdedicated then {
+    SHK_Taskmaster_showHints = false;
+    SHK_Taskmaster_TasksLocal = []; // Array member: ["TaskName","TaskState",TaskHandles]
+    /*
+      If any notes given in init.sqf, simply add them.
+    */
+    if (!isnil "_this") then {
+      if (count _this > 1) then {
+        private ["_notes","_i"];
+        _notes = _this select 1;
+        for [{_i=(count _notes - 1)},{_i>-1},{_i=_i-1}] do {
+          (_notes select _i) call SHK_Taskmaster_addNote;
+        };
+      };
+    };
+    /*
+      Initially wait for server to send the task list for briefing. After briefing is created, add
+      an eventhandler to catch the updated task list server might send.
+      
+      Wait for briefing tasks to be created before enabling taskhints. This prevents hints from briefing tasks
+      from being spammed at the start of the mission.
+    */
+    [] spawn {
+      waituntil {!isnull player};
+      waituntil {!isnil "SHK_Taskmaster_Tasks"};
+      if DEBUG then {diag_log format ["SHK_Taskmaster> Tasks received first time: %1",SHK_Taskmaster_Tasks]};
+      private "_sh";
+      _sh = SHK_Taskmaster_Tasks spawn SHK_Taskmaster_handleEvent;
+      waituntil {scriptdone _sh};
+      SHK_Taskmaster_showHints = true;
+      SHK_Taskmaster_initDone = true;
+
+      "SHK_Taskmaster_Tasks" addpublicvariableeventhandler {
+        (_this select 1) spawn SHK_Taskmaster_handleEvent;
+      };
     };
   };
 };

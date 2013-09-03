@@ -2,6 +2,19 @@
  * Main mission entry point.
 **/
 
+#define DEBUG false
+BLOL_debug = DEBUG || ((paramsArray select 0) > 0);
+
+/**
+ * Set up SHK_Taskmaster.
+**/
+
+call (compile (preprocessFileLineNumbers "vendor\shk_taskmaster.sqf"));
+
+/**
+ * Kick off client- and server-specific initialization.
+**/
+
 if (hasInterface) then {
 	execVM "client\init.sqf";
 };
