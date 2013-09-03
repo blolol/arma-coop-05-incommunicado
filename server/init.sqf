@@ -174,3 +174,17 @@ missionNamespace setVariable ["BLOL_objectives", _objectives];
 private ["_paradrops"];
 _paradrops = compile (preprocessFileLineNumbers "server\lib\paradrops.sqf");
 _paradrops spawn _paradrops;
+
+/**
+ * Eventually garbage collect entities near spawn positions.
+**/
+
+[] spawn {
+	sleep 5; // Give units a chance to spawn
+
+	{
+		if (!(isPlayer _x)) then {
+			[_x] call BLOL_fnc_gc_despawnEventually;
+		};
+	} forEach allUnits;
+};
