@@ -127,7 +127,9 @@ if isserver then {
     };
   } foreach _this;
   publicvariable "SHK_randstapos_selected";
-} else {
+};
+
+if (hasInterface) then {
   _this spawn {
     private ["_s","_m","_p"];
     waituntil {!isnull player};
@@ -137,8 +139,6 @@ if isserver then {
 
     private ["_markerIndex"];
     {
-      format ["_x = %1", _x] call BIS_fnc_log;
-
       private ["_side", "_rand"];
       _side = _x select 0;
       _rand = _x select 1;
@@ -152,26 +152,11 @@ if isserver then {
       _oldPos = getPos player;
       _newPos = getMarkerPos (format ["startpos_%1_%2", _s, _markerIndex]);
       [player, _oldPos, _newPos] call SHK_fnc_move;
-    } else {
-      format ["_markerIndex = %1", _markerIndex] call BIS_fnc_log;
-    };
 
-    {
-      if ((tolower((_x select 0)) == _s) && (count _x > 3)) exitwith {
-        _p = _x select 3;
-        _m = createmarkerlocal ["startpos",getpos player];
-        _m setmarkershapelocal "ICON";
-        if (count _p == 0) then {
-          _m setmarkertypelocal "mil_start";
-          _m setmarkercolorlocal "ColorGreen";
-        } else {
-          _m setmarkercolorlocal format ["Color%1", (_p select 0)];
-          _m setmarkertypelocal (_p select 1);
-          if (count _p > 2) then {
-            _m setmarkertextlocal (_p select 2);
-          };
-        };
-      };
-    } foreach _this;
+      _marker = createMarkerLocal ["afoijalskdjf", _newPos];
+      _marker setMarkerShapeLocal "ICON";
+      _marker setMarkerTypeLocal "mil_start";
+      _marker setMarkerColorLocal "ColorGreen";
+    };
   };
 };
