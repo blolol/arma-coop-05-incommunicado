@@ -20,6 +20,7 @@ _tasks = []; // Tasks to distribute to clients
 	_targetGroupDesc = _targetGroup select 1;
 	_targetGroupLoc = getMarkerPos (_targetGroup select 2);
 	_targetGroupSites = _targetGroup select 3;
+	_targetGroupActions = _targetGroup select 4;
 
 	// Set up task details
 	_taskName = format ["task_%1", _forEachIndex];
@@ -74,7 +75,7 @@ _tasks = []; // Tasks to distribute to clients
 	} forEach _targetGroupSites;
 
 	// Track this group's objectives
-	_objective = [_taskName, _objectiveTargets];
+	_objective = [_taskName, _objectiveTargets, _targetGroupLoc, _targetGroupActions];
 	[BLOL_objectives, _objective] call BIS_fnc_arrayPush;
 
 	// Figure out whether this objective should be assigned first
@@ -110,3 +111,6 @@ if ((count _closestObjective) > 0) then {
 
 // Distribute tasks and notes to clients
 [_tasks, _notes] call SHK_Taskmaster_initServer;
+
+// Watch players and perform objective actions when players are close
+[] spawn BLOL_fnc_objectives_watch;

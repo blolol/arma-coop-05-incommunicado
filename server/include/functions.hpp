@@ -33,14 +33,34 @@ class Server {
 		description = "Initialize mission objectives";
 	};
 
+	class objectives_isActive {
+		file = "server\lib\functions\objectives\is_active.sqf";
+		descriptions = "Returns true if the given objective is active (there are nearby players)";
+	};
+
+	class objectives_markActive {
+		file = "server\lib\functions\objectives\mark_active.sqf";
+		description = "Marks an objective as active (there are nearby players)";
+	};
+
+	class objectives_markInactive {
+		file = "server\lib\functions\objectives\mark_inactive.sqf";
+		description = "Marks an objective as inactive (there are no nearby players)";
+	};
+
+	class objectives_watch {
+		file = "server\lib\functions\objectives\watch.sqf";
+		description = "Perform objective actions when players are nearby";
+	};
+
 	class players_all {
 		file = "server\lib\functions\players\all.sqf";
 		description = "Returns an array of all live, non-captive players";
 	};
 
-	class players_closestDistanceToUnit {
-		file = "server\lib\functions\players\closest_distance_to_unit.sqf";
-		description = "Returns the distance between the unit and the closest live player";
+	class players_closestDistanceTo {
+		file = "server\lib\functions\players\closest_distance_to.sqf";
+		description = "Returns the distance between the location and the closest live player";
 	};
 
 	class players_spawnPosition {

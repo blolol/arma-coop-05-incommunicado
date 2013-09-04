@@ -11,7 +11,8 @@
  *   "TITLE", -- Used as task title and displayed as a task waypoint tooltip.
  *   "DESCRIPTION", -- Used in task description. "%1" is replaced with the name of the objective marker.
  *   "MARKER_NAME", -- Name of a marker located in the general vicinity of the targets.
- *   [ TARGET, (TARGET, (TARGET ...)) ] -- Individual targets
+ *   [ TARGET, (TARGET, (TARGET ...)) ], -- Individual targets
+ *   [ ACTION, (ACTION, (ACTION ...)) ] -- Actions to take when players are close to the objective
  * ]
  *
  * Each target is defined like this:
@@ -32,6 +33,9 @@
 		[
 			["static", "static_tower_0", "Land_TTowerBig_1_F"],
 			["static", "static_tower_1", "Land_TTowerBig_2_F"]
+		],
+		[
+			["militarize", "static_objective_0", 30]
 		]
 	],
 	[
@@ -40,7 +44,8 @@
 		"static_tower_2",
 		[
 			["static", "static_tower_2", "Land_TTowerBig_2_F"]
-		]
+		],
+		[]
 	],
 	[
 		"Sofia radio towers",
@@ -49,7 +54,8 @@
 		[
 			["static", "static_tower_3", "Land_TTowerBig_2_F"],
 			["static", "static_tower_4", "Land_TTowerBig_2_F"]
-		]
+		],
+		[]
 	],
 	[
 		"Pyrgos radio tower",
@@ -57,7 +63,8 @@
 		"static_tower_5",
 		[
 			["static", "static_tower_5", "Land_TTowerBig_2_F"]
-		]
+		],
+		[]
 	],
 	[
 		"Panagia radio towers",
@@ -66,6 +73,7 @@
 		[
 			["static", "static_tower_6", "Land_TTowerBig_2_F"],
 			["static", "static_tower_7", "Land_TTowerBig_2_F"]
-		]
+		],
+		[]
 	]
 ];

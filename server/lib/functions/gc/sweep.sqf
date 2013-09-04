@@ -11,7 +11,7 @@ _distantObjects = [];
 {
 	private ["_unit", "_distanceToClosestPlayer"];
 	_unit = _x;
-	_distanceToClosestPlayer = [_unit, _playableUnits] call BLOL_fnc_players_closestDistanceToUnit;
+	_distanceToClosestPlayer = [_unit, _playableUnits] call BLOL_fnc_players_closestDistanceTo;
 
 	if (_distanceToClosestPlayer >= _garbageCollectionDistance) then {
 		[_distantObjects, _unit] call BIS_fnc_arrayPush;
