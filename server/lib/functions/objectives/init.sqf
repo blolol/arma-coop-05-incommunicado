@@ -4,7 +4,8 @@
 
 BLOL_objectives = [];
 
-private ["_notes", "_objectives", "_tasks"];
+private ["_closestObjective", "_notes", "_objectives", "_tasks"];
+_closestObjective = [];
 _notes = []; // Notes to distribute to clients
 _objectives = call BLOL_fnc_objectives_choose;
 _tasks = []; // Tasks to distribute to clients
@@ -75,7 +76,37 @@ _tasks = []; // Tasks to distribute to clients
 	// Track this group's objectives
 	_objective = [_taskName, _objectiveTargets];
 	[BLOL_objectives, _objective] call BIS_fnc_arrayPush;
+
+	// Figure out whether this objective should be assigned first
+	private ["_distanceToSpawn"];
+	_distanceToSpawn = _targetGroupLoc distance (call BLOL_fnc_players_spawnPosition);
+
+	if ((count _closestObjective) > 0) then {
+		private ["_closestDistance"];
+		_closestDistance = _closestObjective select 1;
+
+		if (_distanceToSpawn < _closestDistance) then {
+			_closestObjective = [_taskName, _distanceToSpawn];
+		};
+	} else {
+		_closestObjective = [_taskName, _distanceToSpawn];
+	};
 } forEach _objectives;
+
+// Assign the closest objective first
+if ((count _closestObjective) > 0) then {
+	private ["_taskName"];
+	_taskName = _closestObjective select 0;
+
+	{
+		private ["_task"];
+		_task = _x;
+
+		if ((_task select 0) == _taskName) exitWith {
+			_task set [5, "assigned"];
+		};
+	} forEach _tasks;
+};
 
 // Distribute tasks and notes to clients
 [_tasks, _notes] call SHK_Taskmaster_initServer;

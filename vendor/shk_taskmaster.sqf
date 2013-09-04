@@ -214,7 +214,7 @@
         _handle = _x createsimpletask [_name];
         _handle setsimpletaskdescription [(_this select 2),(_this select 1),""];
         _handle settaskstate _state;
-        if (_state in ["created","assigned"]) then {
+        if (_state in ["assigned"]) then {
           _x setcurrenttask _handle;
         };
         switch (toupper(typename _dest)) do {

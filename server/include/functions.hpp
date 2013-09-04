@@ -43,6 +43,11 @@ class Server {
 		description = "Returns the distance between the unit and the closest live player";
 	};
 
+	class players_spawnPosition {
+		file = "server\lib\functions\players\spawn_position.sqf";
+		description = "Returns the randomly-selected BLUFOR spawn position";
+	};
+
 	class targets_hash {
 		file = "server\lib\functions\targets\hash.sqf";
 		description = "Generate a deterministic unique ID for the target";
