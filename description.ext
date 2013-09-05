@@ -34,6 +34,7 @@ class CfgDebriefing {
 
 class CfgFunctions {
 	class BLOL {
+		#include "include\functions.hpp"
 		#include "server\include\functions.hpp"
 	};
 };
