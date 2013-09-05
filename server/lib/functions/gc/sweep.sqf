@@ -8,8 +8,8 @@ _playableUnits = call BLOL_fnc_players_all;
 _distantObjects = [];
 
 _eligibleObjects = allUnits;
-_eligibleObjects = [_eligibleObjects, allDead] call BIS_fnc_arrayPush;
-_eligibleObjects = [_eligibleObjects, vehicles] call BIS_fnc_arrayPush;
+_eligibleObjects = [_eligibleObjects, allDead] call BIS_fnc_arrayPushStack;
+_eligibleObjects = [_eligibleObjects, vehicles] call BIS_fnc_arrayPushStack;
 _eligibleObjects = _eligibleObjects - _playableUnits;
 
 {
