@@ -599,7 +599,7 @@ class Mission
 	};
 	class Markers
 	{
-		items=15;
+		items=17;
 		class Item0
 		{
 			position[]={4585.0996,261.96136,15400.311};
@@ -707,6 +707,20 @@ class Mission
 			position[]={19098.951,177.29886,9914.542};
 			name="static_objective_4";
 			text="Static Objective #4";
+			type="Empty";
+		};
+		class Item15
+		{
+			position[]={9217.6133,275.09662,19269.557};
+			name="static_objective_1_action_0";
+			text="Static Objective #1 Action #0";
+			type="Empty";
+		};
+		class Item16
+		{
+			position[]={9933.1377,244.50606,19381.861};
+			name="static_objective_1_action_1";
+			text="Static Objective #1 Action #1";
 			type="Empty";
 		};
 	};

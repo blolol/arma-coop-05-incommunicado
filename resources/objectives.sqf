@@ -45,7 +45,11 @@
 		[
 			["static", "static_tower_2", "Land_TTowerBig_2_F"]
 		],
-		[]
+		[
+			["militarize", "static_tower_2", 30],
+			["militarize", "static_objective_1_action_0", 30],
+			["militarize", "static_objective_1_action_1", 60]
+		]
 	],
 	[
 		"Sofia radio towers",
@@ -55,7 +59,10 @@
 			["static", "static_tower_3", "Land_TTowerBig_2_F"],
 			["static", "static_tower_4", "Land_TTowerBig_2_F"]
 		],
-		[]
+		[
+			["militarize", "static_tower_3", 20],
+			["militarize", "static_tower_4", 20]
+		]
 	],
 	[
 		"Pyrgos radio tower",
@@ -64,7 +71,9 @@
 		[
 			["static", "static_tower_5", "Land_TTowerBig_2_F"]
 		],
-		[]
+		[
+			["militarize", "static_tower_5", 20]
+		]
 	],
 	[
 		"Panagia radio towers",
@@ -74,6 +83,9 @@
 			["static", "static_tower_6", "Land_TTowerBig_2_F"],
 			["static", "static_tower_7", "Land_TTowerBig_2_F"]
 		],
-		[]
+		[
+			["militarize", "static_tower_6", 20],
+			["militarize", "static_tower_7", 20]
+		]
 	]
 ];
