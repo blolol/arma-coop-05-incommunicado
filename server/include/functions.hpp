@@ -48,6 +48,11 @@ class Server {
 		description = "Marks an objective as inactive (there are no nearby players)";
 	};
 
+	class objectives_militarize {
+		file = "server\lib\functions\objectives\militarize.sqf";
+		description = "Spawns military units on a marker within a given radius";
+	};
+
 	class objectives_watch {
 		file = "server\lib\functions\objectives\watch.sqf";
 		description = "Perform objective actions when players are nearby";

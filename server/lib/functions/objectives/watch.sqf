@@ -4,6 +4,9 @@
 
 #define THRESHOLD_DISTANCE 1500
 
+private ["_debug"];
+_debug = { ["BLOL_fnc_objectives_watch", _this] call BLOL_fnc_debug };
+
 if (isNil "BLOL_activeObjectives") then {
 	BLOL_activeObjectives = [];
 };
@@ -11,9 +14,7 @@ if (isNil "BLOL_activeObjectives") then {
 while { true } do {
 	sleep 10;
 
-	if (BLOL_debug) then {
-		diag_log "Beginning objective watch loop...";
-	};
+	"Beginning objective watch loop..." call _debug;
 
 	private ["_players"];
 	_players = call BLOL_fnc_players_all;
@@ -29,6 +30,23 @@ while { true } do {
 		if (_distance <= THRESHOLD_DISTANCE) then {
 			if (!(_name call BLOL_fnc_objectives_isActive)) then {
 				_name call BLOL_fnc_objectives_markActive;
+
+				{
+					private ["_action", "_type", "_options"];
+					_action = _x;
+					_type = _action select 0;
+					_options = [_action, 1] call BIS_fnc_subSelect;
+
+					switch (_type) do {
+						case "militarize": {
+							_options call BLOL_fnc_objectives_militarize;
+						};
+
+						default {
+							["Error: unrecognized action type: %1", _action] call _debug;
+						};
+					};
+				} forEach _actions;
 			};
 		} else {
 			if (_name call BLOL_fnc_objectives_isActive) then {

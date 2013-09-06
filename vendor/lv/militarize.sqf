@@ -160,7 +160,7 @@ if((_men select 0)||(_men select 1))then{
 			if(_unitType in _menArray)then{
 				nul = [_unit,_cPos,_radius,_doorHandling] execVM "vendor\lv\patrol-vD.sqf";
 			}else{
-				nul = [_unit,_pos] execVM 'LV\patrol-vH.sqf';
+				nul = [_unit,_pos] execVM 'vendor\lv\patrol-vH.sqf';
 			};
 		};
 		_unit allowDamage false;
@@ -187,7 +187,7 @@ if((_vehicles select 0)||(_vehicles select 1)||(_vehicles select 2))then{
 				if(surfaceIsWater _pos)then{
 					if(_vehicles select 1)then{
 						_driver = [_pos, (_side - 1)] call LV_fullWaterVehicle;
-						if(!_still)then{nul = [vehicle _driver,_pos] execVM 'LV\patrol-vH.sqf';};
+						if(!_still)then{nul = [vehicle _driver,_pos] execVM 'vendor\lv\patrol-vH.sqf';};
 						_validPos = true;
 					};
 				}else{
@@ -195,23 +195,23 @@ if((_vehicles select 0)||(_vehicles select 1)||(_vehicles select 2))then{
 						_whichOne = floor(random 10);
 						if(_whichOne < 4)then{
 							_driver = [_pos, (_side - 1)] call LV_fullAirVehicle;
-							if(!_still)then{nul = [_driver,_pos,[200,200]] execVM 'LV\patrol-vE.sqf';};
+							if(!_still)then{nul = [_driver,_pos,[200,200]] execVM 'vendor\lv\patrol-vE.sqf';};
 							vehicle _driver flyInHeight 10;
 							_validPos = true;
 						}else{
 							_driver = [_pos, (_side - 1)] call LV_fullLandVehicle;
-							if(!_still)then{nul = [vehicle _driver,_pos] execVM 'LV\patrol-vE.sqf';};
+							if(!_still)then{nul = [vehicle _driver,_pos] execVM 'vendor\lv\patrol-vE.sqf';};
 							_validPos = true;
 						};
 					}else{
 						if(_vehicles select 0)then{
 							_driver = [_pos, (_side - 1)] call LV_fullLandVehicle;
-							if(!_still)then{nul = [vehicle _driver,_pos] execVM 'LV\patrol-vE.sqf';};
+							if(!_still)then{nul = [vehicle _driver,_pos] execVM 'vendor\lv\patrol-vE.sqf';};
 							_validPos = true;
 						}else{
 							if(_vehicles select 2)then{
 								_driver = [_pos, (_side - 1)] call LV_fullAirVehicle;
-								if(!_still)then{nul = [_driver,_pos,[200,200]] execVM 'LV\patrol-vE.sqf';};
+								if(!_still)then{nul = [_driver,_pos,[200,200]] execVM 'vendor\lv\patrol-vE.sqf';};
 								vehicle _driver flyInHeight 10;
 								_validPos = true;
 							};
@@ -224,7 +224,7 @@ if((_vehicles select 0)||(_vehicles select 1)||(_vehicles select 2))then{
 					_vehicle = createVehicle [_unitType, _pos, [], 0, "NONE"]; 
 					_crew = [_vehicle, _milGroup] call BIS_fnc_spawnCrew;
 					_driver = driver _vehicle;
-					if(!_still)then{nul = [_driver,_pos] execVM 'LV\patrol-vE.sqf';};
+					if(!_still)then{nul = [_driver,_pos] execVM 'vendor\lv\patrol-vE.sqf';};
 					_validPos = true;
 				};
 			};
