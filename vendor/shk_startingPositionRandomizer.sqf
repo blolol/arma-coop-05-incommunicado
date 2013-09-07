@@ -149,7 +149,8 @@ if (hasInterface) then {
     } forEach SHK_randstapos_selected;
 
     if (!(isNil "_markerIndex")) then {
-      private ["_markerName", "_oldPos", "_newPos", "_spawnMarker", "_outpostMarker"];
+      private ["_markerName", "_oldPos", "_newPos", "_spawnMarker", "_outpostMarker",
+        "_respawnMarker"];
 
       _markerName = if (_markerIndex > 0) then {
         format ["startpos_%1_%2", _s, _markerIndex];
@@ -175,6 +176,9 @@ if (hasInterface) then {
       _outpostMarker setMarkerTypeLocal "mil_objective";
       _outpostMarker setMarkerColorLocal "ColorOPFOR";
       _outpostMarker setMarkerTextLocal "OPFOR Outpost";
+
+      _respawnMarker = createMarkerLocal ["respawn_west", _newPos];
+      _respawnMarker setMarkerTypeLocal "empty";
     };
   };
 };
