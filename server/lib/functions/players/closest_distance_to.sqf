@@ -33,15 +33,20 @@ if ((typename _object) == (typename [])) then {
 	};
 };
 
-if (_valid) then {
-	_players = if ((count _this) > 1) then {
-		_this select 1;
-	} else {
-		call BLOL_fnc_players_all;
-	};
+_players = if ((count _this) > 1) then {
+	_this select 1;
+} else {
+	call BLOL_fnc_players_all;
+};
 
+if ((count _players) > 0) then {
 	["Players: %1", _players] call _debug;
+} else {
+	"Error: there are no live players" call _debug;
+	_valid = false;
+};
 
+if (_valid) then {
 	_distances = [];
 
 	{

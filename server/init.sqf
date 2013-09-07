@@ -9,9 +9,7 @@ call BLOL_fnc_objectives_init;
 execVM "server\lib\init_ambient_combat.sqf";
 
 // Initialize enemy paradrops
-private ["_paradrops"];
-_paradrops = compile (preprocessFileLineNumbers "server\lib\paradrops.sqf");
-_paradrops spawn _paradrops;
+[] spawn BLOL_fnc_ambiance_paradrops;
 
 // Initialize garbage collection
 [30, 2500] spawn BLOL_fnc_gc_init;

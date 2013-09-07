@@ -3,6 +3,16 @@
 **/
 
 class Server {
+	class ambiance_paradrop {
+		file = "server\lib\functions\ambiance\paradrop.sqf";
+		description = "Lands enemy troops at a location via helicopter";
+	};
+
+	class ambiance_paradrops {
+		file = "server\lib\functions\ambiance\paradrops.sqf";
+		description = "Periodically lands enemy troops near players via helicopter";
+	};
+
 	class gc_init {
 		file = "server\lib\functions\gc\init.sqf";
 		description = "Initializes periodic garbage collection of objects far away from players";
