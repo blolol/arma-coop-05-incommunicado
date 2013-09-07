@@ -599,7 +599,7 @@ class Mission
 	};
 	class Markers
 	{
-		items=17;
+		items=21;
 		class Item0
 		{
 			position[]={4585.0996,261.96136,15400.311};
@@ -721,6 +721,34 @@ class Mission
 			position[]={9933.1377,244.50606,19381.861};
 			name="static_objective_1_action_1";
 			text="Static Objective #1 Action #1";
+			type="Empty";
+		};
+		class Item17
+		{
+			position[]={8303.2344,76.006371,10086.866};
+			name="outpost_west_3";
+			text="Spawn #3 Outpost";
+			type="Empty";
+		};
+		class Item18
+		{
+			position[]={9703.0762,2.6127355,22306.486};
+			name="outpost_west_2";
+			text="Spawn #2 Outpost";
+			type="Empty";
+		};
+		class Item19
+		{
+			position[]={20600.135,51.354706,20118.715};
+			name="outpost_west_1";
+			text="Spawn #1 Outpost";
+			type="Empty";
+		};
+		class Item20
+		{
+			position[]={23014.721,48.461811,7262.9189};
+			name="outpost_west_0";
+			text="Spawn #0 Outpost";
 			type="Empty";
 		};
 	};

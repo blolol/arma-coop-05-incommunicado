@@ -5,41 +5,41 @@
   http://forums.bistudio.com/showthread.php?162423-SHK_startingPositionRandomizer
 
   Randomly selects a location for each side from predefined, editor placed, markers.
-  
+
   IMPORTANT!
     The positions of all units and objects to be moved are based on their relative position to the
     first marker (for example startpos_east). What this means is that you should place your
     objects around/on top of the first marker.
-    
+
     For example, if the randomizer decides that the starting position is startpos_east_2 instead of
     startpos_east. All the objects will be moved and placed to same direction and distance from
     the position 2 marker that they were from position marker startpos_east.
-  
+
   Marker naming:
     All markers need to start with "startpos", following an underscore and side. Then an underscore
     and an incremental integer. Only exception is the first marker, it has no number.
-    
+
     Examples:
       startpos_east
       startpos_east_1
-      
+
       startpos_west
       startpos_west_1
       startpos_west_2
-  
+
     Tip: if you first create the marker without number, you can copy & paste that and rest of the
     markers will be named correctly.
-  
+
   Supported sides:
     "east", "west", "guer", "civ"
 
   Syntax:
     [["side",number,<objectrange>,[]],["side",number,[object1,object2],["color","type","text"]],...] call compile preprocessfile "shk_randstapos.sqf"
-  
+
   Parameters:
     0   String    One of the four sides.
     1   Integer   How many possible positions (markers) there is for this side.
-  
+
   Optional parameters:
     2   Number    Range in meters from the first marker to move all vehicles etc objects.
         Array     List of objects to move besides playableunits.
@@ -48,14 +48,14 @@
                   0  Color  Valid colors: black, blue, green, orange, red, white, yellow
                   1  Type   Marker types: http://community.bistudio.com/wiki/cfgMarkers
                   2  Text   Optional. Text to display next to the marker.
-  
+
   Examples:
     [["west",3]] call compile preprocessfile "shk_randstapos.sqf"
     [["west",3],["east",2]] call compile preprocessfile "shk_randstapos.sqf"
     [["west",2,20],["east",5,[car1,truck4]]] call compile preprocessfile "shk_randstapos.sqf"
     [["west",3,0,[]]] call compile preprocessfile "shk_randstapos.sqf"
     [["west",3,50,["blue","b_inf","Infantry"]]] call compile preprocessfile "shk_randstapos.sqf"
-  
+
   Briefing:
     If marker parameter(s) is defined for a side, a marker with name "startpos" is created at the starting location.
     This marker will be different for each side, but has same name on each client, which means you can link to this marker
@@ -83,7 +83,7 @@ if isserver then {
     _side = tolower(_x select 0);
     _rand = floor(random (_x select 1));
     SHK_randstapos_selected set [count SHK_randstapos_selected, [_side,_rand]];
-    
+
     // only move if randomly selected position is other than the current position
     if (_rand > 0) then {
       _oldPos = getmarkerpos format ["startpos_%1",_side];
@@ -95,7 +95,7 @@ if isserver then {
           [_x,_oldPos,_newPos] call SHK_fnc_move;
         };
       } foreach (if ismultiplayer then {playableunits} else {switchableunits});
-      
+
       // move non-playable objects
       if (count _x > 2) then {
         _range = _x select 2;
@@ -106,7 +106,7 @@ if isserver then {
               [_x,_oldPos,_newPos] call SHK_fnc_move;
             } foreach _range;
           };
-        
+
         // only range given
         } else {
           if (_range > 0) then {
@@ -137,7 +137,7 @@ if (hasInterface) then {
 
     _s = tolower(str(side player));
 
-    private ["_markerIndex"];
+    private ["_markerIndex", "_markerName"];
     {
       private ["_side", "_rand"];
       _side = _x select 0;
@@ -148,15 +148,33 @@ if (hasInterface) then {
       };
     } forEach SHK_randstapos_selected;
 
-    if (!(isNil "_markerIndex") && (_markerIndex > 0)) then {
-      _oldPos = getPos player;
-      _newPos = getMarkerPos (format ["startpos_%1_%2", _s, _markerIndex]);
-      [player, _oldPos, _newPos] call SHK_fnc_move;
+    if (!(isNil "_markerIndex")) then {
+      private ["_markerName", "_oldPos", "_newPos", "_spawnMarker", "_outpostMarker"];
 
-      _marker = createMarkerLocal ["startpos", _newPos];
-      _marker setMarkerShapeLocal "ICON";
-      _marker setMarkerTypeLocal "mil_start";
-      _marker setMarkerColorLocal "ColorGreen";
+      _markerName = if (_markerIndex > 0) then {
+        format ["startpos_%1_%2", _s, _markerIndex];
+      } else {
+        format ["startpos_%1", _s];
+      };
+
+      _oldPos = getPos player;
+      _newPos = getMarkerPos _markerName;
+
+      if (_markerIndex > 0) then {
+        [player, _oldPos, _newPos] call SHK_fnc_move;
+      };
+
+      _spawnMarker = createMarkerLocal ["startpos", _newPos];
+      _spawnMarker setMarkerShapeLocal "ICON";
+      _spawnMarker setMarkerTypeLocal "mil_start";
+      _spawnMarker setMarkerColorLocal "ColorBLUFOR";
+      _spawnMarker setMarkerTextLocal "BLUFOR Insertion";
+
+      _outpostMarker = format ["outpost_%1_%2", _s, _markerIndex];
+      _outpostMarker setMarkerShapeLocal "ICON";
+      _outpostMarker setMarkerTypeLocal "mil_objective";
+      _outpostMarker setMarkerColorLocal "ColorOPFOR";
+      _outpostMarker setMarkerTextLocal "OPFOR Outpost";
     };
   };
 };
