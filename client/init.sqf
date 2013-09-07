@@ -3,4 +3,17 @@
 **/
 
 // Initialize SHK_taskmaster
-call SHK_Taskmaster_initClient;
+ private ["_notes"];
+
+_notes = [
+	[
+		"Overview",
+		"You and your team have landed on Altis under cover of the morning fog. You are " +
+			"equipped with explosives. Your mission is to knock out the enemy's military " +
+			"communications ahead of BLUFOR's main assault.<br /><br />OPFOR's key military " +
+			"radio towers are marked on your map. Find transportation and complete your objectives.",
+		WEST
+	]
+];
+
+[[], _notes] call SHK_Taskmaster_initClient;

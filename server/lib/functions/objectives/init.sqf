@@ -4,9 +4,8 @@
 
 BLOL_objectives = [];
 
-private ["_closestObjective", "_notes", "_objectives", "_tasks"];
+private ["_closestObjective", "_objectives", "_tasks"];
 _closestObjective = [];
-_notes = []; // Notes to distribute to clients
 _objectives = call BLOL_fnc_objectives_choose;
 _tasks = []; // Tasks to distribute to clients
 
@@ -109,8 +108,8 @@ if ((count _closestObjective) > 0) then {
 	} forEach _tasks;
 };
 
-// Distribute tasks and notes to clients
-[_tasks, _notes] call SHK_Taskmaster_initServer;
+// Distribute tasks to clients
+[_tasks, []] call SHK_Taskmaster_initServer;
 
 // Watch players and perform objective actions when players are close
 [] spawn BLOL_fnc_objectives_watch;
