@@ -41,7 +41,7 @@ _despawnRange = 1500;
 _unitInit = if (BLOL_debug) then {
 	"diag_log (format ['Spawned ambient combat unit: %1', this]);";
 } else {
-	nil;
+	"";
 };
 
 _patrolType = 1;
