@@ -3,6 +3,11 @@
 **/
 
 class Server {
+	class ambiance_civilianVehicles {
+		file = "server\lib\functions\ambiance\civilian_vehicles.sqf";
+		description = "Spawns civilian vehicles in nearby villages and cities";
+	};
+
 	class ambiance_paradrop {
 		file = "server\lib\functions\ambiance\paradrop.sqf";
 		description = "Lands enemy troops at a location via helicopter";
@@ -11,6 +16,16 @@ class Server {
 	class ambiance_paradrops {
 		file = "server\lib\functions\ambiance\paradrops.sqf";
 		description = "Periodically lands enemy troops near players via helicopter";
+	};
+
+	class ambiance_randomVehicleDamage {
+		file = "server\lib\functions\ambiance\random_vehicle_damage.sqf";
+		description = "Returns a pseudorandom vehicle damage value based on weights";
+	};
+
+	class ambiance_randomVehicleFuel {
+		file = "server\lib\functions\ambiance\random_vehicle_fuel.sqf";
+		description = "Returns a pseudorandom vehicle fuel value based on weights";
 	};
 
 	class gc_init {
@@ -76,6 +91,11 @@ class Server {
 	class players_closestDistanceTo {
 		file = "server\lib\functions\players\closest_distance_to.sqf";
 		description = "Returns the distance between the location and the closest live player";
+	};
+
+	class players_nearbyLocations {
+		file = "server\lib\functions\players\nearby_locations.sqf";
+		description = "Returns locations near all live players";
 	};
 
 	class players_spawnPosition {
