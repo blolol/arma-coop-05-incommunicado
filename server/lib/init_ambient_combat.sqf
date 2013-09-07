@@ -2,9 +2,16 @@
  * Initializes ambient combat.
 **/
 
-// Wait a few minutes before spawning first ambient combat units
+#define MIN_DISTANCE_FROM_SPAWN 1000
+
+// Wait until players move away from the spawn point
 if (!BLOL_debug) then {
-	sleep ([300, 600] call BIS_fnc_randomInt);
+	waitUntil {
+		private ["_distance"];
+		sleep 10;
+		_distance = [(call BLOL_fnc_players_spawnPosition)] call BLOL_fnc_players_closestDistanceTo;
+		_distance >= MIN_DISTANCE_FROM_SPAWN;
+	};
 };
 
 private ["_minRange", "_maxRange", "_minDelay", "_maxDelay", "_maxGroups", "_sideRatios",

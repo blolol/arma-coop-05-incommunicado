@@ -2,6 +2,7 @@
  * Periodically lands enemy troops near players via helicopter.
 **/
 
+#define MIN_DISTANCE_FROM_SPAWN 1000
 #define MAX_NEARBY_HELIPADS 3
 #define NEARBY_HELIPADS_RADIUS 250
 
@@ -30,12 +31,13 @@ while { true } do {
 			_position = position _player;
 
 			if (!(isNil "_position")) then {
-				private ["_nearbyHelipads"];
+				private ["_distanceToSpawn", "_nearbyHelipads"];
 
+				_distanceFromSpawn = _position distance (call BLOL_fnc_players_spawnPosition);
 				_nearbyHelipads = count (_position nearObjects ["Land_helipadEmpty_F",
 					NEARBY_HELIPADS_RADIUS]);
 
-				if (_nearbyHelipads < MAX_NEARBY_HELIPADS) then {
+				if ((_distanceFromSpawn >= MIN_DISTANCE_FROM_SPAWN) && (_nearbyHelipads < MAX_NEARBY_HELIPADS)) then {
 					private ["_minDistance", "_maxDistance", "_minDistanceFromObjects",
 						"_terrainType", "_maxGradient", "_mustBeShore", "_blacklist",
 						"_defaultPositions", "_target"];
@@ -55,8 +57,8 @@ while { true } do {
 
 					[_target] call BLOL_fnc_ambiance_paradrop;
 				} else {
-					["Skipping paradrop because there are already %1 helipads near %2",
-						_nearbyHelipads, _player] call _debug;
+					["Skipping paradrop because it is too close to the spawn point or there are " +
+						"already %1 helipads near %2", _nearbyHelipads, _player] call _debug;
 				};
 			} else {
 				"Skipping paradrop because the chosen player's location could not be fetched" call _debug;
