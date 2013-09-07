@@ -11,8 +11,8 @@ private ["_minRange", "_maxRange", "_minDelay", "_maxDelay", "_maxGroups", "_sid
 	"_targetUnits", "_aiSkill", "_aiCommunicates", "_despawnRange", "_unitInit", "_patrolType",
 	"_multiplayer", "_options"];
 
-_minRange = 450;
-_maxRange = 900;
+_minRange = 550;
+_maxRange = 1250;
 
 _minDelay = if (BLOL_debug) then { 10 } else { 120 };
 _maxDelay = if (BLOL_debug) then { 30 } else { 300 };
@@ -41,6 +41,6 @@ _patrolType = 1;
 
 _multiplayer = true;
 
-_options = [_minRange, _maxRange, _minDelay, _maxDelay, _maxGroups, _sideRatios, _targetUnits, _aiSkill,
-	_aiCommunicates, _despawnRange, _unitInit, _patrolType, _multiplayer];
+_options = [_minRange, _maxRange, _minDelay, _maxDelay, _maxGroups, _sideRatios, _targetUnits,
+	_aiSkill, _aiCommunicates, _despawnRange, _unitInit, _patrolType, _multiplayer];
 _options execVM "vendor\lv\ambientCombat.sqf";
