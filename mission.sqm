@@ -673,7 +673,7 @@ class Mission
 		};
 		class Item10
 		{
-			position[]={20753.547,2.707876,20397.551};
+			position[]={20820.617,3.6017454,20439.223};
 			name="startpos_west_1";
 			text="Spawn #1";
 			type="Empty";
@@ -681,7 +681,7 @@ class Mission
 		};
 		class Item11
 		{
-			position[]={9830.542,1.9942334,22327.754};
+			position[]={9836.1602,1.5548388,22327.586};
 			name="startpos_west_2";
 			text="Spawn #2";
 			type="Empty";
