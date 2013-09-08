@@ -18,6 +18,11 @@ class Server {
 		description = "Periodically lands enemy troops near players via helicopter";
 	};
 
+	class ambiance_proximityModifier {
+		file = "server\lib\functions\ambiance\proximity_modifier.sqf";
+		description = "Returns a value between 0 and 1 based on how close the position is to a settlement";
+	};
+
 	class ambiance_randomCivilianVehicleClass {
 		file = "server\lib\functions\ambiance\random_civilian_vehicle_class.sqf";
 		description = "Returns a random civilian vehicle class based on weights";
