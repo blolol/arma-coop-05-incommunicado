@@ -23,6 +23,11 @@ class Server {
 		description = "Returns a random civilian vehicle class based on weights";
 	};
 
+	class ambiance_randomEnemyGroupSize {
+		file = "server\lib\functions\ambiance\random_enemy_group_size.sqf";
+		description = "Returns a reasonable number of enemy infantry to spawn based on the current number of players";
+	};
+
 	class ambiance_randomVehicleDamage {
 		file = "server\lib\functions\ambiance\random_vehicle_damage.sqf";
 		description = "Returns a pseudorandom vehicle damage value based on weights";

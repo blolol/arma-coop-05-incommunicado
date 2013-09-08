@@ -1,16 +1,16 @@
 /*
 				***		ARMA3Alpha AMBIENT COMBAT SCRIPT v2.5 - by SPUn / lostvar	***
-				
+
 			Creates ambient combat around defined objects/units with multiple customizable features.
-			
+
 		Calling the script:
-		
+
 				default: 	nul = [] execVM "vendor\lv\ambientCombat.sqf";
-				custom: 	nul = [min range, max range, min delay, max delay, groups, side ratios, center unit, AI skills, 
+				custom: 	nul = [min range, max range, min delay, max delay, groups, side ratios, center unit, AI skills,
 								communication, dissapear distance, custom init, patrol type, MP] execVM "vendor\lv\ambientCombat.sqf";
-								
+
 	Parameters:
-		
+
 		min range 			= 	number 		(meters, minimum range from center unit for AI to spawn) 			DEFAULT: 450
 		max range 			= 	number 		(meters, maximum range from center unit for AI to spawn) 			DEFAULT: 900
 		min delay 			= 	number 		(seconds, minimum spawning delay for AI) 							DEFAULT: 30
@@ -26,36 +26,36 @@
 								endurance,reloadSpeed]
 		communication 		= 	0/1 		(if 1, then AI groups will communicate and inform each others about enemies) DEFAULT: 0
 		dissapearDistance 	= 	number 		(distance from center unit where AI units/groups will dissapear) 	DEFAULT: 2500
-								NOTE: Make sure this is bigger than *maxRange !		
+								NOTE: Make sure this is bigger than *maxRange !
 		custom init 		= 	"init commands" (if you want something in init field of units, put it here) 	DEFAULT: nil
-								NOTE: Keep it inside quotes, and if you need quotes in init commands, you MUST 
+								NOTE: Keep it inside quotes, and if you need quotes in init commands, you MUST
 								use ' or "" instead of ". EXAMPLE: "hint 'this is hint';"
 		patrol type			=	1 or array 	(1 = doMove for each unit individually)								DEFAULT: 1
-								array = ["waypointBehaviour","waypointType"] = waypoint for group 
+								array = ["waypointBehaviour","waypointType"] = waypoint for group
 								ex: ["AWARE","SAD"]
 		MP					= 	true/false	(true = 'center unit' will automatically be an array of human		DEFAULT: false
 								players and everything will be synced around them)
-								
+
 		Fully customized example:
 				nul = [150,600,10,30,8,[0,1,1],player,[0.2,0.3,0.1,0.55,0.25,1,1,0.25,1,1],1,800,"hint format['spawning unit: %1',this];",
 					["AWARE","SAD"],false] execVM "vendor\lv\ambientCombat.sqf";
-					
+
 */
 if (!isServer)exitWith{};
 private ["_patrolType","_customInit","_communication","_eastGroups","_westGroups","_skills","_syncedUnit","_groupAmount","_grp","_minRange","_maxRange","_minTime","_maxTime","_centerPos","_range","_dir","_spawnPos","_side","_menOrVehicle","_timeDelay","_skls","_spotValid","_leftSides","_fullRatio","_perRatio","_westRatio","_eastRatio","_indeRatio","_lossRatio","_indeGroups","_sideRatios","_dissapearDistance","_waterUnitChance","_landOrAir","_mp","_tempPos","_isFlat","_d1","_m","_avoidArray"];
 
-_minRange = if(count _this > 0)then{_this select 0;} else {450};	 
-_maxRange = if(count _this > 1)then{_this select 1;} else {900};	 
-_minTime = if(count _this > 2)then{_this select 2;} else {30};	 
-_maxTime = if(count _this > 3)then{_this select 3;} else {300};	 
+_minRange = if(count _this > 0)then{_this select 0;} else {450};
+_maxRange = if(count _this > 1)then{_this select 1;} else {900};
+_minTime = if(count _this > 2)then{_this select 2;} else {30};
+_maxTime = if(count _this > 3)then{_this select 3;} else {300};
 _groupAmount = if(count _this > 4)then{_this select 4;} else {6};
-_sideRatios = if(count _this > 5)then{_this select 5;} else {[1,1,1]}; 
-_syncedUnit = if(count _this > 6)then{_this select 6;} else {player};	 
-_skills = if(count _this > 7)then{_this select 7;} else {"default"};	 
-_communication = if(count _this > 8)then{_this select 8;} else {0};	 
-_dissapearDistance = if(count _this > 9)then{_this select 9;} else {2500};	 
-_customInit = if(count _this > 10)then{_this select 10;} else {nil};	 
-_patrolType = if(count _this > 11)then{_this select 11;} else {1};	
+_sideRatios = if(count _this > 5)then{_this select 5;} else {[1,1,1]};
+_syncedUnit = if(count _this > 6)then{_this select 6;} else {player};
+_skills = if(count _this > 7)then{_this select 7;} else {"default"};
+_communication = if(count _this > 8)then{_this select 8;} else {0};
+_dissapearDistance = if(count _this > 9)then{_this select 9;} else {2500};
+_customInit = if(count _this > 10)then{_this select 10;} else {nil};
+_patrolType = if(count _this > 11)then{_this select 11;} else {1};
 _mp = if(count _this > 12)then{_this select 12;} else {false};
 
 if(isNil("LV_fullLandVehicle"))then{LV_fullLandVehicle = compile preprocessFile "vendor\lv\LV_functions\LV_fnc_fullLandVehicle.sqf";};
@@ -73,10 +73,10 @@ if(_mp)then{if(isNil("LV_GetPlayers"))then{LV_GetPlayers = compile preprocessFil
 if(isNil("LV_FindLandPosition"))then{LV_FindLandPosition = compile preprocessFile "vendor\lv\LV_functions\LV_fnc_findLandPosition.sqf";};
 if(isNil("LV_IsInMarker"))then{LV_IsInMarker = compile preprocessFile "vendor\lv\LV_functions\LV_fnc_isInMarker.sqf";};
 
-if(isNil("LV_ACS_activeGroups"))then{LV_ACS_activeGroups = [];}; 
-if(isNil("LV_AI_westGroups"))then{LV_AI_westGroups = [];}; 
-if(isNil("LV_AI_eastGroups"))then{LV_AI_eastGroups = [];}; 
-if(isNil("LV_AI_indeGroups"))then{LV_AI_indeGroups = [];}; 
+if(isNil("LV_ACS_activeGroups"))then{LV_ACS_activeGroups = [];};
+if(isNil("LV_AI_westGroups"))then{LV_AI_westGroups = [];};
+if(isNil("LV_AI_eastGroups"))then{LV_AI_eastGroups = [];};
+if(isNil("LV_AI_indeGroups"))then{LV_AI_indeGroups = [];};
 
 if(!(isNil("ACpatrol")))then{terminate ACpatrol;};
 if(!(isNil("ACcleanUp")))then{terminate ACcleanUp;};
@@ -96,7 +96,7 @@ while{true}do{
 	sleep _timeDelay;
 	if(count LV_ACS_activeGroups < _groupAmount)then{
 		if(count LV_ACS_activeGroups == (_groupAmount - 1))then{sleep _timeDelay;};
-		
+
 			if(_mp)then{ _syncedUnit = call LV_GetPlayers;};
 			_spotValid = false;
 			while{!_spotValid}do{
@@ -106,7 +106,7 @@ while{true}do{
 				}else{
 					_centerPos = getPos _syncedUnit;
 				};
-				
+
 				if(_maxRange == _minRange)then{
 					_range = _maxRange;
 				}else{
@@ -114,10 +114,10 @@ while{true}do{
 				};
 				_dir = random 360;
 				_spawnPos = [(_centerPos select 0) + (sin _dir) * _range, (_centerPos select 1) + (cos _dir) * _range, 0];
-				
+
 				if(surfaceIsWater _spawnPos)then{
-					_isFlat = []; 	
-					_d1 = 0;	
+					_isFlat = [];
+					_d1 = 0;
 					while{count _isFlat == 0}do{ //check if there's land at _maxRange
 						_tempPos = [(_centerPos select 0) + (sin _d1) * _maxRange, (_centerPos select 1) + (cos _d1) * _maxRange, 0];
 						_isFlat = _tempPos isflatempty [2,0,1,2,0,false];
@@ -139,7 +139,7 @@ while{true}do{
 						if((_x distance _spawnPos) < _minRange)exitWith{_spotValid = false;};
 					}forEach _syncedUnit;
 				};
-				
+
 				_avoidArray = [];
 				for "_i" from 0 to 30 do {
 					if(_i == 0)then{_m = "ACavoid";}else{_m = ("ACavoid_" + str _i);};
@@ -148,8 +148,8 @@ while{true}do{
 				{
 					if([_spawnPos,_x] call LV_IsInMarker)exitWith{_spotValid = false;};
 				}forEach _avoidArray;
-				
-				
+
+
 			};
 
 		//Handle side ratios -> decide side:
@@ -187,7 +187,7 @@ while{true}do{
 				};
 			};
 		};
-			
+
 		_menOrVehicle = floor(random 10);
 		if(_menOrVehicle < 4)then{
 			if(surfaceIsWater _spawnPos)then{
@@ -201,15 +201,18 @@ while{true}do{
 				};
 			};
 		}else{
+			private ["_count"];
+			_count = call BLOL_fnc_ambiance_randomEnemyGroupSize;
+
 			if(surfaceIsWater _spawnPos)then{
-				_grp = [_spawnPos, _side, [10,3]] call LV_diveGroup;
+				_grp = [_spawnPos, _side, _count] call LV_diveGroup;
 			}else{
-				_grp = [_spawnPos, _side, [10,3]] call LV_menGroup;
+				_grp = [_spawnPos, _side, _count] call LV_menGroup;
 			};
 		};
 		if(typeName _skills != "STRING")then{_skls = [_grp,_skills] call LV_ACskills;};
 		LV_ACS_activeGroups set [(count LV_ACS_activeGroups), (group _grp)];
-		
+
 		switch(_side)do{
 			case 0:{
 				LV_AI_eastGroups set [(count LV_AI_eastGroups), (group _grp)];
@@ -221,8 +224,8 @@ while{true}do{
 				LV_AI_indeGroups set [(count LV_AI_indeGroups), (group _grp)];
 			};
 		};
-		
-		if(!isNil("_customInit"))then{ 
+
+		if(!isNil("_customInit"))then{
 			{
 				[_x,_customInit] spawn LV_vehicleInit;
 			} forEach units group _grp;
