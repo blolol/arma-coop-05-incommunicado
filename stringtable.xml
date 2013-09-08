@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project name="COOP_05_Incommunicado">
+	<Package name="Briefing">
+		<Key ID="STR_BLOL_C_BRIEFING_MISSION_TITLE">
+			<English>Mission</English>
+		</Key>
+		<Key ID="STR_BLOL_C_BRIEFING_MISSION_CONTENT">
+			<English>You and your team have landed on Altis under cover of the morning fog. Your mission is to knock out the enemy's military communications ahead of BLUFOR's main assault.%1OPFOR's key military radio towers are marked on your map. Find transportation and destroy the towers.%1Watch out for air and ground resistance. You've made a quiet landing, but you won't go unnoticed for long...</English>
+		</Key>
+		<Key ID="STR_BLOL_C_BRIEFING_TRANSPORT_TITLE">
+			<English>Transportation</English>
+		</Key>
+		<Key ID="STR_BLOL_C_BRIEFING_TRANSPORT_CONTENT">
+			<English>There's a %3military outpost%2 near your LZ. The troops stationed there probably have some sort of transport.%1You can also take a look around villages, towns and cities. OPFOR has probably left behind a couple of junkers during their sweep across the island.</English>
+		</Key>
+	</Package>
+</Project>

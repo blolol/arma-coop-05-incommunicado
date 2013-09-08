@@ -176,6 +176,7 @@ if (hasInterface) then {
       _outpostMarker setMarkerTypeLocal "mil_objective";
       _outpostMarker setMarkerColorLocal "ColorOPFOR";
       _outpostMarker setMarkerTextLocal "OPFOR Outpost";
+      BLOL_outpostMarker = _outpostMarker;
 
       _respawnMarker = createMarkerLocal ["respawn_west", _newPos];
       _respawnMarker setMarkerTypeLocal "empty";
