@@ -2,17 +2,16 @@
  * Returns locations near all live players.
 **/
 
-#define LOCATION_TYPES ["NameLocal", "NameVillage", "NameCity", "NameCityCapital"]
-
-private ["_radius", "_locations", "_debug"];
+private ["_radius", "_types", "_locations", "_debug"];
 _radius = _this select 0;
+_types = _this select 1;
 _locations = [];
 _debug = { ["BLOL_fnc_players_nearbyLocations", _this] call BLOL_fnc_debug };
 
 {
 	private ["_player", "_locationsNearPlayer"];
 	_player = _x;
-	_locationsNearPlayer = nearestLocations [(position _player), LOCATION_TYPES, _radius];
+	_locationsNearPlayer = nearestLocations [(position _player), _types, _radius];
 
 	["Found %1 locations near %2", (count _locationsNearPlayer), _player] call _debug;
 

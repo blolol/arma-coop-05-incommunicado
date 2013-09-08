@@ -2,18 +2,20 @@
  * Spawns civilian vehicles in villages and cities near players.
 **/
 
+#define LOCATION_TYPES ["NameLocal", "NameVillage", "NameCity", "NameCityCapital"]
+
 private ["_debug", "_vehicleClasses"];
 _debug = { ["BLOL_fnc_ambiance_civilianVehicles", _this] call BLOL_fnc_debug };
 
 // Initialize BLOL_cfg_civilianVehicles
 call BLOL_fnc_ambiance_randomCivilianVehicleClass;
-_vehicleClasses = BLOL_fnc_ambiance_civilianVehicles select 0;
+_vehicleClasses = BLOL_cfg_civilianVehicles select 0;
 
 while { true } do {
 	sleep 10;
 
 	private ["_locations"];
-	_locations = [1000] call BLOL_fnc_players_nearbyLocations;
+	_locations = [1000, LOCATION_TYPES] call BLOL_fnc_players_nearbyLocations;
 
 	{
 		private ["_location", "_position", "_name", "_size", "_radius", "_roads",
