@@ -6,7 +6,6 @@ class Mission
 		"a3_map_altis",
 		"A3_Characters_F_BLUFOR",
 		"A3_Modules_F_Sites",
-		"A3_Boat_F_Boat_Transport_01",
 		"A3_Soft_F_Offroad_01",
 		"A3_Characters_F_OPFOR",
 		"a3_characters_f_beta"
@@ -53,8 +52,8 @@ class Mission
 				items=5;
 				class Item0
 				{
-					position[]={23264.762,1.9892502,7292.7769};
-					azimut=-284.397;
+					position[]={23270.488,0.99514163,7292.1968};
+					azimut=-274.22235;
 					special="NONE";
 					id=0;
 					side="WEST";
@@ -68,8 +67,8 @@ class Mission
 				};
 				class Item1
 				{
-					position[]={23263.117,2.3152099,7289.8198};
-					azimut=-284.397;
+					position[]={23268.855,1.3745606,7290.7441};
+					azimut=-274.22235;
 					special="NONE";
 					id=1;
 					side="WEST";
@@ -81,8 +80,8 @@ class Mission
 				};
 				class Item2
 				{
-					position[]={23261.74,2.4934523,7287.0513};
-					azimut=-284.397;
+					position[]={23266.629,1.773562,7290.6841};
+					azimut=-274.22235;
 					special="NONE";
 					id=2;
 					side="WEST";
@@ -94,8 +93,8 @@ class Mission
 				};
 				class Item3
 				{
-					position[]={23261.695,2.8044453,7294.4668};
-					azimut=-284.397;
+					position[]={23268.711,1.2144482,7293.4233};
+					azimut=-274.22235;
 					special="NONE";
 					id=3;
 					side="WEST";
@@ -107,8 +106,8 @@ class Mission
 				};
 				class Item4
 				{
-					position[]={23258.629,3.6029463,7296.3979};
-					azimut=-284.397;
+					position[]={23266.496,1.6051464,7293.4502};
+					azimut=-274.22235;
 					special="NONE";
 					id=4;
 					side="WEST";
@@ -658,11 +657,11 @@ class Mission
 		};
 		class Item8
 		{
-			position[]={23262.82,2.6023798,7292.4517};
+			position[]={23272.105,0.80430913,7292.1001};
 			name="startpos_west";
 			text="Spawn #0";
 			type="Empty";
-			angle=-281.34525;
+			angle=-448.75333;
 		};
 		class Item9
 		{
@@ -673,11 +672,11 @@ class Mission
 		};
 		class Item10
 		{
-			position[]={20820.617,3.6017454,20439.223};
+			position[]={20823.076,1.4771118,20461.494};
 			name="startpos_west_1";
 			text="Spawn #1";
 			type="Empty";
-			angle=-544.51605;
+			angle=-909.07465;
 		};
 		class Item11
 		{
@@ -689,11 +688,11 @@ class Mission
 		};
 		class Item12
 		{
-			position[]={8028.333,3.6873498,10227.688};
+			position[]={8010.5469,1.161095,10227.114};
 			name="startpos_west_3";
 			text="Spawn #3";
 			type="Empty";
-			angle=-246.26978;
+			angle=-267.35968;
 		};
 		class Item13
 		{

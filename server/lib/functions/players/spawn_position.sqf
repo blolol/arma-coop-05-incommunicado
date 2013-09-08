@@ -23,6 +23,7 @@ if (!(isNil "BLOL_spawnPosition")) then {
 					format ["startpos_west_%1", _markerIndex];
 				};
 
+				BLOL_spawnMarkerName = _markerName;
 				_spawn = getMarkerPos _markerName;
 			};
 		} forEach SHK_randstapos_selected;

@@ -16,3 +16,6 @@ execVM "server\lib\init_ambient_combat.sqf";
 
 // Initialize garbage collection
 [30, 2500] spawn BLOL_fnc_gc_init;
+
+// Spawn assault boat with supplies near players
+execVM "server\lib\init_assault_boat.sqf";
