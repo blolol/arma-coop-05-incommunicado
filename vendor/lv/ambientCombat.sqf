@@ -94,6 +94,10 @@ while{true}do{
 		_timeDelay = (random(_maxTime - _minTime)) + _minTime;
 	};
 	sleep _timeDelay;
+
+	// Dynamically change group count based on current number of players
+	_groupAmount = (round ((call BLOL_fnc_players_count) * ((random 3) + 2))) min 6;
+
 	if(count LV_ACS_activeGroups < _groupAmount)then{
 		if(count LV_ACS_activeGroups == (_groupAmount - 1))then{sleep _timeDelay;};
 
