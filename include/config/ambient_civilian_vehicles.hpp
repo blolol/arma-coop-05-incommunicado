@@ -3,7 +3,7 @@
 **/
 
 class AmbientCivilianVehicles {
-	class LocationTypes {
+	class Locations {
 		class NameLocal {
 			minMaxVehicles[] = { 0, 1 };
 		};
@@ -18,6 +18,36 @@ class AmbientCivilianVehicles {
 
 		class NameCityCapital {
 			minMaxVehicles[] = { 4, 8 };
+		};
+	};
+
+	class Vehicles {
+		class C_Hatchback_01_F {
+			weight = 0.5;
+		};
+
+		class C_Hatchback_01_sport_F {
+			weight = 0.1;
+		};
+
+		class C_Offroad_01_F {
+			weight = 0.95;
+		};
+
+		class C_Quadbike_01_F {
+			weight = 0.85;
+		};
+
+		class C_SUV_01_F {
+			weight = 0.2;
+		};
+
+		class C_Van_01_transport_F {
+			weight = 0.4;
+		};
+
+		class C_Van_01_box_F {
+			weight = 0.4;
 		};
 	};
 };

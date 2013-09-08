@@ -14,4 +14,5 @@ switch (_type) do {
 	case "array": { getArray _config };
 	case "number": { getNumber _config };
 	case "string": { getText _config };
+	default { _config };
 };

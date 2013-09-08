@@ -18,6 +18,11 @@ class Server {
 		description = "Periodically lands enemy troops near players via helicopter";
 	};
 
+	class ambiance_randomCivilianVehicleClass {
+		file = "server\lib\functions\ambiance\random_civilian_vehicle_class.sqf";
+		description = "Returns a random civilian vehicle class based on weights";
+	};
+
 	class ambiance_randomVehicleDamage {
 		file = "server\lib\functions\ambiance\random_vehicle_damage.sqf";
 		description = "Returns a pseudorandom vehicle damage value based on weights";

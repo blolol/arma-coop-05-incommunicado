@@ -2,29 +2,12 @@
  * Spawns civilian vehicles in villages and cities near players.
 **/
 
-private ["_debug", "_vehicleClassesAndWeights", "_vehicleClasses", "_vehicleWeights"];
+private ["_debug", "_vehicleClasses"];
 _debug = { ["BLOL_fnc_ambiance_civilianVehicles", _this] call BLOL_fnc_debug };
 
-_vehicleClassesAndWeights = [
-	["C_Hatchback_01_F", 0.5],
-	["C_Hatchback_01_sport_F", 0.1],
-	["C_Offroad_01_F", 0.95],
-	["I_G_Offroad_01_F", 0.75],
-	["C_Quadbike_01_F", 0.85],
-	["C_SUV_01_F", 0.2],
-	["C_Van_01_transport_F", 0.4],
-	["C_Van_01_box_F", 0.4]
-];
-
-_vehicleClasses = [];
-_vehicleWeights = [];
-
-{
-	_class = _x select 0;
-	_weight = _x select 1;
-	[_vehicleClasses, _class] call BIS_fnc_arrayPush;
-	[_vehicleWeights, _weight] call BIS_fnc_arrayPush;
-} forEach _vehicleClassesAndWeights;
+// Initialize BLOL_cfg_civilianVehicles
+call BLOL_fnc_ambiance_randomCivilianVehicleClass;
+_vehicleClasses = BLOL_fnc_ambiance_civilianVehicles select 0;
 
 while { true } do {
 	sleep 10;
@@ -50,12 +33,12 @@ while { true } do {
 		_roads = _position nearRoads _radius;
 
 		// Determine how many vehicles to spawn
-		_spawnCount = ["array", "AmbientCivilianVehicles", "LocationTypes", (type _location),
+		_spawnCount = ["array", "AmbientCivilianVehicles", "Locations", (type _location),
 			"minMaxVehicles"] call BLOL_fnc_config;
 		_spawnCount = _spawnCount call BIS_fnc_randomInt;
 
 		["Computed appropriate spawn count of %1 for %2 (%3)", _spawnCount,
-			_name, (size _location)] call _debug;
+			_name, (type _location)] call _debug;
 
 		// Search for existing civilian vehicles within the spawn radius
 		_existingCount = count (nearestObjects [_position, _vehicleClasses, _radius]);
@@ -78,8 +61,7 @@ while { true } do {
 
 				_roadSegment = _x;
 				_position = position _roadSegment;
-				_vehicleClass = [_vehicleClasses, _vehicleWeights]
-					call BIS_fnc_selectRandomWeighted;
+				_vehicleClass = call BLOL_fnc_ambiance_randomCivilianVehicleClass;
 				_direction = [0, 360] call BIS_fnc_randomInt;
 				_damage = call BLOL_fnc_ambiance_randomVehicleDamage;
 				_fuel = call BLOL_fnc_ambiance_randomVehicleFuel;
@@ -92,8 +74,8 @@ while { true } do {
 				if (BLOL_debug) then {
 					private ["_markerName", "_marker"];
 
-					["Spawned a %1-damage %2 near %3 with %4 fuel", _damage,
-						_vehicleClass, _name, _fuel] call _debug;
+					["Spawned a %1 near %2 with %3 damage and %4 fuel", _vehicleClass, _name,
+						_damage, _fuel] call _debug;
 
 					_markerName = format ["spawn_%1_%1", _forEachIndex,
 						([0, 1000] call BIS_fnc_randomInt)];
