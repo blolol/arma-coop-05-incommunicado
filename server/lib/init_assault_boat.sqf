@@ -13,7 +13,7 @@ _boat setDir (markerDir BLOL_spawnMarkerName);
 _position = [_position, 0, 0, 0, 0, 1, 0, [], [_position, _position]] call BIS_fnc_findSafePos;
 _supplies = "Box_NATO_AmmoOrd_F" createVehicle _position;
 _supplies setDir ([0, 360] call BIS_fnc_randomInt);
-_supplies addMagazineCargoGlobal ["DemoCharge_Remote_Mag", ([12, 25] call BIS_fnc_randomInt)];
+_supplies addMagazineCargoGlobal ["DemoCharge_Remote_Mag", ([3, 16] call BIS_fnc_randomInt)];
 
 _supplies = "Box_NATO_Ammo_F" createVehicle _position;
 _supplies setDir ([0, 360] call BIS_fnc_randomInt);
