@@ -13,11 +13,11 @@ class AmbientCivilianVehicles {
 		};
 
 		class NameCity {
-			minMaxVehicles[] = { 3, 5 };
+			minMaxVehicles[] = { 0, 5 };
 		};
 
 		class NameCityCapital {
-			minMaxVehicles[] = { 4, 8 };
+			minMaxVehicles[] = { 0, 8 };
 		};
 	};
 
