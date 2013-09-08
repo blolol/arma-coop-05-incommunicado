@@ -1,0 +1,3 @@
+[submodule "vendor/a3-loadout"]
+	path = vendor/a3-loadout
+	url = https://github.com/aeroson/a3-loadout.git
