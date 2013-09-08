@@ -22,8 +22,8 @@ class Mission
 	randomSeed=11112023;
 	class Intel
 	{
-		briefingName="COOP 05 Incommunicado";
-		overviewText="Knock out enemy communications ahead of a larger assault.";
+		briefingName="@STR_BLOL_C_BRIEFING_NAME";
+		overviewText="@STR_BLOL_C_BRIEFING_OVERVIEW";
 		startWeather=0.29999998;
 		startFog=0.39999998;
 		startWind=0.099999994;

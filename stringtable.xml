@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Project name="COOP_05_Incommunicado">
 	<Package name="Briefing">
+		<Key ID="STR_BLOL_C_BRIEFING_NAME">
+			<English>COOP 05 Incommunicado</English>
+		</Key>
+		<Key ID="STR_BLOL_C_BRIEFING_OVERVIEW">
+			<English>Knock out enemy communications ahead of a larger assault.</English>
+		</Key>
 		<Key ID="STR_BLOL_C_BRIEFING_MISSION_TITLE">
 			<English>Mission</English>
 		</Key>
@@ -12,6 +18,14 @@
 		</Key>
 		<Key ID="STR_BLOL_C_BRIEFING_TRANSPORT_CONTENT">
 			<English>There's a %3military outpost%2 near your LZ. The troops stationed there probably have some sort of transport.%1You can also take a look around villages, towns and cities. OPFOR has probably left behind a couple of junkers during their sweep across the island.</English>
+		</Key>
+	</Package>
+	<Package name="Debriefing">
+		<Key ID="STR_BLOL_C_DEBRIEFING_SUBTITLE">
+			<English>Enemy communications neutralized</English>
+		</Key>
+		<Key ID="STR_BLOL_C_DEBRIEFING_DESCRIPTION">
+			<English>You successfully knocked out the enemy's communications infrastructure, granting our main invasion force the upper hand.</English>
 		</Key>
 	</Package>
 </Project>
