@@ -116,6 +116,9 @@ while{true}do{
 				}else{
 					_range = (random(_maxRange - _minRange)) + _minRange;
 				};
+
+				_range = _range * (1 - (([_centerPos] call BLOL_fnc_ambiance_proximityModifier) * 0.33));
+
 				_dir = random 360;
 				_spawnPos = [(_centerPos select 0) + (sin _dir) * _range, (_centerPos select 1) + (cos _dir) * _range, 0];
 
@@ -207,6 +210,7 @@ while{true}do{
 		}else{
 			private ["_count"];
 			_count = call BLOL_fnc_ambiance_randomEnemyGroupSize;
+			_count = _count * (([_spawnPos] call BLOL_fnc_ambiance_proximityModifier) * 0.75 + 1);
 
 			if(surfaceIsWater _spawnPos)then{
 				_grp = [_spawnPos, _side, _count] call LV_diveGroup;
