@@ -23,6 +23,10 @@ class Header {
 	maxPlayers = 5;
 };
 
+class CfgBlolol {
+	#include "include\config\ambient_civilian_vehicles.hpp"
+};
+
 class CfgDebriefing {
 	class End1 {
 		subtitle = "Enemy communications neutralized";

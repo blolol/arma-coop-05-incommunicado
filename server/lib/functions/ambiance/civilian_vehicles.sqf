@@ -49,13 +49,10 @@ while { true } do {
 		// Find road segments surrounding the location and a little bit outside of it
 		_roads = _position nearRoads _radius;
 
-		// Determine how many vehicles to spawn by dividing the largest location size
-		// dimension by 100 and rounding to the nearest integer (so that a village that
-		// is 230 m on its largest dimension might spawn two vehicles), or, in the weird
-		// case that there are less road segments than (SIZE / 100), use the number of
-		// nearby road segments. Then, randomize that count a bit.
-		_spawnCount = [[round (_size / 100), (count _roads)], 0] call BIS_fnc_findExtreme;
-		_spawnCount = round (_spawnCount * (random 0.75));
+		// Determine how many vehicles to spawn
+		_spawnCount = ["array", "AmbientCivilianVehicles", "LocationTypes", (type _location),
+			"minMaxVehicles"] call BLOL_fnc_config;
+		_spawnCount = _spawnCount call BIS_fnc_randomInt;
 
 		["Computed appropriate spawn count of %1 for %2 (%3)", _spawnCount,
 			_name, (size _location)] call _debug;
