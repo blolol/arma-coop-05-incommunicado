@@ -98,6 +98,11 @@ class Server {
 		description = "Returns the distance between the location and the closest live player";
 	};
 
+	class players_count {
+		file = "server\lib\functions\players\count.sqf";
+		description = "Returns the number of live, non-captive human players";
+	};
+
 	class players_nearbyLocations {
 		file = "server\lib\functions\players\nearby_locations.sqf";
 		description = "Returns locations near all live players";
