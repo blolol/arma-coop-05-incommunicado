@@ -17,3 +17,6 @@ _notes = [
 ];
 
 [[], _notes] call SHK_Taskmaster_initClient;
+
+// Initialize loadout persistence
+[] spawn BLOL_fnc_loadout_init;
