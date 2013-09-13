@@ -8,6 +8,11 @@ class Server {
 		description = "Spawns civilian vehicles in nearby villages and cities";
 	};
 
+	class ambiance_militarySites {
+		file = "server\lib\functions\ambiance\military_sites.sqf";
+		description = "Spawns military units at nearby military installations";
+	};
+
 	class ambiance_paradrop {
 		file = "server\lib\functions\ambiance\paradrop.sqf";
 		description = "Lands enemy troops at a location via helicopter";
