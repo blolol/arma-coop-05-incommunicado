@@ -48,14 +48,16 @@ _debug = { ["BLOL_fnc_ambiance_populateMilitaryStructures", _this] call BLOL_fnc
 
 		{
 			if ((random 1) <= _percentage) then {
-				private ["_position", "_type", "_skill"];
+				private ["_position", "_dir", "_type", "_skill"];
 				_position = _x;
+				_dir = ([_center, _position] call BIS_fnc_dirTo) + ([-45, 45] call BIS_fnc_randomNum);
 				_type = UNIT_TYPES call BIS_fnc_selectRandom;
 				_skill = [0.85, 1.0] call BIS_fnc_randomNum;
 
 				_unit = _group createUnit [_type, _position, [], 0, "NONE"];
 				_unit disableAI "MOVE";
 				_unit setPosATL _position;
+				_unit setDir _dir;
 				_unit setUnitPos "UP";
 				_unit setUnitAbility _skill;
 
