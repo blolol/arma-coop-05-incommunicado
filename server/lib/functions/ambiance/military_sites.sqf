@@ -11,6 +11,10 @@
 #define SEARCH_INTERVAL 15
 #define SEARCH_RANGE 1500
 #define LOCATION_TYPES ["NameLocal"]
+#define PRIZE_VEHICLE_TYPES ["B_APC_Wheeled_01_cannon_F", "B_APC_Tracked_01_AA_F", \
+ "B_APC_Tracked_01_rcws_F", "B_G_Offroad_01_armed_F", "B_MRAP_01_F", "B_MRAP_01_gmg_F", \
+ "B_MRAP_01_hmg_F", "I_APC_Wheeled_03_cannon_F", "I_MRAP_03_F", "I_MRAP_03_gmg_F", "I_MRAP_03_hmg_F"]
+#define PRIZE_VEHICLE_WEIGHTS [0.05, 0.05, 0.05, 0.25, 0.50, 0.10, 0.20, 0.05, 0.10, 0.05, 0.05]
 
 if (isNil "BLOL_spawnedMilitarySites") then {
 	BLOL_spawnedMilitarySites = [];
@@ -48,7 +52,14 @@ while { true } do {
 			_position = position _location;
 			_radius = ((size _location) call BIS_fnc_arithmeticMean) * 1.25;
 
-			[(position _location), _radius] call BLOL_fnc_ambiance_populateMilitaryStructures;
+			// Populate military structures with observers
+			[_position, _radius] call BLOL_fnc_ambiance_populateMilitaryStructures;
+
+			// Spawn "prize" vehicle
+			_type = [PRIZE_VEHICLE_TYPES, PRIZE_VEHICLE_WEIGHTS] call BIS_fnc_selectRandomWeighted;
+			_prize = createVehicle [_type, _position, [], 2, "NONE"];
+			_prize setDir ([0, 360] call BIS_fnc_randomInt);
+			["Spawned a %1 prize vehicle at %2", _type, _position] call _debug;
 
 			[BLOL_spawnedMilitarySites, _hash] call BIS_fnc_arrayPush;
 		};

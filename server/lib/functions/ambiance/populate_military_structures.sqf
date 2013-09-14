@@ -18,7 +18,7 @@ _buildings = nearestObjects [_center, BUILDING_TYPES, _radius];
 _debug = { ["BLOL_fnc_ambiance_populateMilitaryStructures", _this] call BLOL_fnc_debug };
 
 {
-	private ["_building", "_positions", "_i", "_pos"];
+	private ["_building", "_positions", "_i", "_position"];
 	_building = _x;
 	_positions = [];
 	_i = 0;
