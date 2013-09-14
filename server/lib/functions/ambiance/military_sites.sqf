@@ -9,10 +9,6 @@ if (isNil "BLOL_militarySites") then {
 	BLOL_militarySites = [] call CBA_fnc_hashCreate;
 };
 
-if (isNil "LV_fnc_fillHouse") then {
-	LV_fnc_fillHouse = compile (preprocessFileLineNumbers "vendor\lv\fillHouse.sqf");
-};
-
 if (isNil "LV_fnc_militarize") then {
 	LV_fnc_militarize = compile (preprocessFileLineNumbers "vendor\lv\militarize.sqf");
 };
@@ -69,6 +65,18 @@ while { true } do {
  			_prize setDir ([0, 360] call BIS_fnc_randomInt);
  			_prize setDamage ([0.2, 0.75] call BIS_fnc_randomNum);
  			["Spawned a %1 prize vehicle at %2", _prizeType, _name] call _debug;
+
+ 			// Spawn guards around the "prize" vehicle
+ 			[_prize, 2, 5, [true, false], [false, false, false], true, [4, 2], 0, 0.8, nil, nil, nil]
+ 				spawn LV_fnc_militarize;
+
+ 			// Spawn ground vehicle patrols
+ 			[_center, 2, (_radius * 0.75), [false, false], [true, false, false], false, 0, [1, 2], "default",
+ 				nil, nil, nil] spawn LV_fnc_militarize;
+
+ 			// Spawn an air patrol
+ 			[_center, 2, _radius, [false, false], [false, false, true], false, 0, [1, 0], "default",
+ 				nil, nil, nil] spawn LV_fnc_militarize;
 
  			[_site, "spawned", true] call CBA_fnc_hashSet;
  		};
