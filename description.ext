@@ -25,6 +25,7 @@ class Header {
 
 class CfgBlolol {
 	#include "include\config\ambient_civilian_vehicles.hpp"
+	#include "include\config\military_sites.hpp"
 };
 
 class CfgDebriefing {
@@ -41,6 +42,10 @@ class CfgFunctions {
 		#include "include\functions.hpp"
 		#include "client\include\functions.hpp"
 		#include "server\include\functions.hpp"
+	};
+
+	class CBA {
+		#include "vendor\cba\include\functions.hpp"
 	};
 };
 

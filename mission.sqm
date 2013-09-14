@@ -598,7 +598,7 @@ class Mission
 	};
 	class Markers
 	{
-		items=21;
+		items=23;
 		class Item0
 		{
 			position[]={4585.0996,261.96136,15400.311};
@@ -748,6 +748,26 @@ class Mission
 			position[]={23014.721,48.461811,7262.9189};
 			name="outpost_west_0";
 			text="Spawn #0 Outpost";
+			type="Empty";
+		};
+		class Item21
+		{
+			position[]={12845.199,90.572014,16687.836};
+			name="mil_site_0";
+			text="Military Site #0";
+			markerType="ELLIPSE";
+			type="Empty";
+			colorName="ColorOPFOR";
+			fillName="SolidBorder";
+			a=125;
+			b=125;
+			drawBorder=1;
+		};
+		class Item22
+		{
+			position[]={12813.754,87.129921,16686.814};
+			name="mil_site_0_prize_0";
+			text="Military Site #0 Prize #0";
 			type="Empty";
 		};
 	};

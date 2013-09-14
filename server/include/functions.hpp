@@ -43,6 +43,11 @@ class Server {
 		description = "Returns a reasonable number of enemy infantry to spawn based on the current number of players";
 	};
 
+	class ambiance_randomMilitarySitePrizeClass {
+		file = "server\lib\functions\ambiance\random_military_site_prize_class.sqf";
+		description = "Returns a random military site 'prize' vehicle class based on weights";
+	};
+
 	class ambiance_randomVehicleDamage {
 		file = "server\lib\functions\ambiance\random_vehicle_damage.sqf";
 		description = "Returns a pseudorandom vehicle damage value based on weights";

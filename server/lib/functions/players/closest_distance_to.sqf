@@ -1,5 +1,5 @@
 /**
- * Returns the distance between the object and the closest live, non-captive player.
+ * Returns the distance between the object and the closest live player.
 **/
 
 private ["_object", "_valid", "_players", "_distances", "_debug", "_minDistance"];

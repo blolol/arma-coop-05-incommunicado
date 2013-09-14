@@ -17,7 +17,7 @@
 			<English>Transportation</English>
 		</Key>
 		<Key ID="STR_BLOL_C_BRIEFING_TRANSPORT_CONTENT">
-			<English>There's a %3military outpost%2 near your LZ. The troops stationed there probably have some sort of transport.%1You can also take a look around villages, towns and cities. OPFOR has probably left behind a couple of junkers during their sweep across the island.</English>
+			<English>There's a %3military outpost%2 near your LZ. The troops stationed there probably have some sort of transport.%1You can also take a look around villages, towns and cities. OPFOR has probably left behind a couple of junkers during their sweep across the island.%1Finally, satellite imagery suggests OPFOR is restoring some BLUFOR equipment at several well-guarded military bases around the island -- probably captured during our failed assault in the spring. If you happen across any of our lost toys... you know what to do.</English>
 		</Key>
 	</Package>
 	<Package name="Debriefing">
