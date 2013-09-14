@@ -10,3 +10,8 @@ execVM "client\lib\init_briefing.sqf";
 
 // Initialize loadout persistence
 [] spawn BLOL_fnc_loadout_init;
+
+// Set player as neutral for debugging
+if (BLOL_debug) then {
+	player setCaptive true;
+};
