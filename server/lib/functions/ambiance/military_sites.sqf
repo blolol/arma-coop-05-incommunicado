@@ -65,7 +65,7 @@ while { true } do {
  			_prize = createVehicle [_prizeType, _prizePos, [], 2, "NONE"];
  			_prize call BLOL_fnc_gc_whitelist;
  			_prize setDir ([0, 360] call BIS_fnc_randomInt);
- 			_prize setDamage ([0.2, 0.75] call BIS_fnc_randomNum);
+ 			_prize setDamage (call BLOL_fnc_ambiance_randomVehicleDamage);
  			["Spawned a %1 prize vehicle at %2", _prizeType, _name] call _debug;
 
  			// Spawn guards around the "prize" vehicle
