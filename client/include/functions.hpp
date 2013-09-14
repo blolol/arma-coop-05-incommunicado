@@ -3,6 +3,11 @@
 **/
 
 class Client {
+	class debug_copyPositionToClipboard {
+		file = "client\lib\functions\debug\copy_position_to_clipboard.sqf";
+		description = "Copies the unit's position and heading to the clipboard";
+	};
+
 	class loadout_get {
 		file = "vendor\a3-loadout\get_loadout.sqf";
 		description = "Gets a unit's loadout";

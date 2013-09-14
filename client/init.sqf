@@ -13,5 +13,5 @@ execVM "client\lib\init_briefing.sqf";
 
 // Set player as neutral for debugging
 if (BLOL_debug) then {
-	player setCaptive true;
+	execVM "client\lib\init_debug.sqf";
 };
