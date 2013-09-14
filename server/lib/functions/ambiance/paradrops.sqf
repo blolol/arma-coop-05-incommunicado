@@ -12,11 +12,7 @@ _debug = { ["BLOL_fnc_ambiance_paradrops", _this] call BLOL_fnc_debug };
 while { true } do {
 	private ["_delay"];
 
-	_delay = if (BLOL_debug) then {
-		[15, 30] call BIS_fnc_randomInt;
-	} else {
-		[180, 480] call BIS_fnc_randomInt;
-	};
+	_delay = [180, 480] call BIS_fnc_randomInt;
 
 	["Waiting %1 seconds until next paradrop attempt...", _delay] call _debug;
 

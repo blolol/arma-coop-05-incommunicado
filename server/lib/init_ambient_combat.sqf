@@ -5,13 +5,11 @@
 #define MIN_DISTANCE_FROM_SPAWN 1000
 
 // Wait until players move away from the spawn point
-if (!BLOL_debug) then {
-	waitUntil {
-		private ["_distance"];
-		sleep 10;
-		_distance = [(call BLOL_fnc_players_spawnPosition)] call BLOL_fnc_players_closestDistanceTo;
-		_distance >= MIN_DISTANCE_FROM_SPAWN;
-	};
+waitUntil {
+	private ["_distance"];
+	sleep 10;
+	_distance = [(call BLOL_fnc_players_spawnPosition)] call BLOL_fnc_players_closestDistanceTo;
+	_distance >= MIN_DISTANCE_FROM_SPAWN;
 };
 
 private ["_minRange", "_maxRange", "_minDelay", "_maxDelay", "_maxGroups", "_sideRatios",
@@ -21,8 +19,8 @@ private ["_minRange", "_maxRange", "_minDelay", "_maxDelay", "_maxGroups", "_sid
 _minRange = 550;
 _maxRange = 1250;
 
-_minDelay = if (BLOL_debug) then { 10 } else { 120 };
-_maxDelay = if (BLOL_debug) then { 30 } else { 300 };
+_minDelay = 120;
+_maxDelay = 300;
 
 _maxGroups = 3;
 _sideRatios = [
@@ -38,11 +36,7 @@ _aiCommunicates = 1;
 
 _despawnRange = 1500;
 
-_unitInit = if (BLOL_debug) then {
-	"diag_log (format ['Spawned ambient combat unit: %1', this]);";
-} else {
-	"";
-};
+_unitInit = "";
 
 _patrolType = 1;
 
