@@ -598,7 +598,7 @@ class Mission
 	};
 	class Markers
 	{
-		items=25;
+		items=32;
 		class Item0
 		{
 			position[]={4585.0996,261.96136,15400.311};
@@ -778,14 +778,71 @@ class Mission
 			markerType="ELLIPSE";
 			type="Empty";
 			colorName="ColorOPFOR";
+			fillName="SolidBorder";
 			a=100;
 			b=100;
+			drawBorder=1;
 		};
 		class Item24
 		{
 			position[]={15192.551,17.926165,17302.928};
 			name="mil_site_1_prize_0";
 			text="Military Site #1 Prize #0";
+			type="Empty";
+		};
+		class Item25
+		{
+			position[]={16082.913,15.827175,17000.459};
+			name="mil_site_2";
+			text="Military Site #2";
+			markerType="ELLIPSE";
+			type="Empty";
+			colorName="ColorOPFOR";
+			fillName="SolidBorder";
+			a=200;
+			b=200;
+			drawBorder=1;
+		};
+		class Item26
+		{
+			position[]={16016.662,13.409492,17039.387};
+			name="mil_site_2_prize_0";
+			text="Military Site #2 Prize #0";
+			type="Empty";
+		};
+		class Item27
+		{
+			position[]={16081.172,13.577163,17083.133};
+			name="mil_site_2_prize_1";
+			text="Military Site #2 Prize #1";
+			type="Empty";
+		};
+		class Item28
+		{
+			position[]={16153.177,13.452163,17043.375};
+			name="mil_site_2_prize_2";
+			text="Military Site #2 Prize #2";
+			type="Empty";
+		};
+		class Item29
+		{
+			position[]={16153.177,13.331182,16962.275};
+			name="mil_site_2_prize_3";
+			text="Military Site #2 Prize #3";
+			type="Empty";
+		};
+		class Item30
+		{
+			position[]={16085.083,13.323877,16915.217};
+			name="mil_site_2_prize_4";
+			text="Military Site #2 Prize #4";
+			type="Empty";
+		};
+		class Item31
+		{
+			position[]={16018.1,13.652112,16953.693};
+			name="mil_site_2_prize_5";
+			text="Military Site #2 Prize #5";
 			type="Empty";
 		};
 	};

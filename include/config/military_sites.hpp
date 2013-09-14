@@ -126,6 +126,112 @@ class MilitarySites {
 				};
 			}; // Groups
 		}; // MilitarySite1
+
+		class MilitarySite2 {
+			center = "mil_site_2";
+			prizes[] = {
+				"mil_site_2_prize_0", "mil_site_2_prize_1", "mil_site_2_prize_2",
+				"mil_site_2_prize_3", "mil_site_2_prize_4", "mil_site_2_prize_5"
+			};
+
+			class Groups {
+				class NorthwestObservationPost {
+					minMaxFill[] = { 0.5, 1.0 };
+					positions[] = {
+						{ 15913.9, 17058.6, 4.03502, 341.39 },
+						{ 15911.2, 17057.3, 4.14049, 257.959 },
+						{ 15912.7, 17054, 4.16827, 167.752 }
+					};
+				};
+
+				class NorthObservationPost {
+					minMaxFill[] = { 0.5, 1.0 };
+					positions[] = {
+						{ 16054.9, 17143.8, 4.34319, 28.6322 },
+						{ 16051.9, 17144, 4.35314, 351.641 },
+						{ 16055.8, 17141.4, 4.11751, 100.586 },
+						{ 16051.6, 17141.8, 1.97398, 17.6704 }
+					};
+				};
+
+				class SoutheastObservationPost {
+					minMaxFill[] = { 0.5, 1.0 };
+					positions[] = {
+						{ 16109.2, 16827.4, 4.33348, 130.998 },
+						{ 16110.5, 16829.5, 4.35811, 122.252 }
+					};
+				};
+
+				class SouthwestObservationPost {
+					minMaxFill[] = { 0.5, 1.0 };
+					positions[] = {
+						{ 15997.7, 16830.8, 4.34593, 185.008 },
+						{ 16000.8, 16830.8, 4.34546, 176.976 }
+					};
+				};
+
+				class WestEntranceObservationPost {
+					minMaxFill[] = { 0.5, 1.0 };
+					positions[] = {
+						{ 15971.4, 16978.6, 4.34424, 295.15 },
+						{ 15975.5, 16979.5, 4.35481, 71.5864 }
+					};
+				};
+
+				class WestHQ {
+					minMaxFill[] = { 0.25, 0.75 };
+					positions[] = {
+						{ 15939.1, 17032.3, 3.17438, 108.429 },
+						{ 15937.7, 17035.7, 3.18124, 48.7989 },
+						{ 15933.1, 17027.2, 3.05648, 146.992 }
+					};
+				};
+
+				class CentralMedicHQ {
+					minMaxFill[] = { 0.25, 0.75 };
+					positions[] = {
+						{ 16074.3, 16918.6, 3.1237, 351.192 },
+						{ 16077.4, 16918.8, 3.15782, 28.8591 },
+						{ 16077.5, 16915.7, 3.18431, 122.946 },
+						{ 16077.1, 16911.6, 3.20214, 150.257 },
+						{ 16067.8, 16909.2, 3.15435, 258.892 },
+						{ 16070.7, 16909.8, 3.15119, 145.74 }
+					};
+				};
+
+				class NortheastEntrance {
+					minMaxFill[] = { 1.0, 1.0 };
+					positions[] = {
+						{ 16217.1, 17008.7, 0.00144768, 51.3215 },
+						{ 16209.6, 16995.4, 0.00142193, 160.096 }
+					};
+				};
+
+				class EastEntrance {
+					minMaxFill[] = { 0.5, 1.0 };
+					positions[] = {
+						{ 16178.1, 16941.8, 0.00144863, 142.904 },
+						{ 16184.6, 16952.2, 0.00145912, 77.151 }
+					};
+				};
+
+				class SoutheastEntrance {
+					minMaxFill[] = { 1.0, 1.0 };
+					positions[] = {
+						{ 16124.1, 16842.5, 0.00143051, 60.1058 },
+						{ 16119.2, 16834.2, 0.0014019, 160.794 }
+					};
+				};
+
+				class WestEntrance {
+					minMaxFill[] = { 1.0, 1.0 };
+					positions[] = {
+						{ 15928, 16999.6, 0.00144005, 297.377 },
+						{ 15934.7, 16986.4, 0.0014143, 202.436 }
+					};
+				};
+			}; // Groups
+		}; // MilitarySite2
 	}; // Locations
 
 	class Prizes {
