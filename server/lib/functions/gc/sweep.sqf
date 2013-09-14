@@ -33,3 +33,6 @@ _eligibleObjects = _eligibleObjects - _playableUnits;
 } forEach _eligibleObjects;
 
 _distantObjects call BLOL_fnc_gc_mark;
+
+// Clean up empty groups
+{ deleteGroup _x } forEach allGroups;
