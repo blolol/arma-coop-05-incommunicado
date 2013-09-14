@@ -4,7 +4,7 @@
 
 class MilitarySites {
 	class Locations {
-		class MilitarySite1 {
+		class MilitarySite0 {
 			center = "mil_site_0";
 			prizes[] = { "mil_site_0_prize_0" };
 
@@ -90,9 +90,9 @@ class MilitarySites {
 					};
 				};
 			}; // Groups
-		}; // MilitarySite1
+		}; // MilitarySite0
 
-		class MilitarySite2 {
+		class MilitarySite1 {
 			center = "mil_site_1";
 			prizes[] = { "mil_site_1_prize_0", "mil_site_1_prize_1" };
 
@@ -125,7 +125,7 @@ class MilitarySites {
 					};
 				};
 			}; // Groups
-		}; // MilitarySite2
+		}; // MilitarySite1
 	}; // Locations
 
 	class Prizes {
