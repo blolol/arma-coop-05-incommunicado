@@ -7,6 +7,7 @@ class MilitarySites {
 		class MilitarySite0 {
 			center = "mil_site_0";
 			prizes[] = { "mil_site_0_prize_0" };
+			minMaxAirPatrols[] = { 1, 1 };
 
 			class Groups {
 				class SouthEntrance {
@@ -95,6 +96,7 @@ class MilitarySites {
 		class MilitarySite1 {
 			center = "mil_site_1";
 			prizes[] = { "mil_site_1_prize_0", "mil_site_1_prize_1" };
+			minMaxAirPatrols[] = { 0, 1 };
 
 			class Groups {
 				class NorthObservationPost {
@@ -133,6 +135,7 @@ class MilitarySites {
 				"mil_site_2_prize_0", "mil_site_2_prize_1", "mil_site_2_prize_2",
 				"mil_site_2_prize_3", "mil_site_2_prize_4", "mil_site_2_prize_5"
 			};
+			minMaxAirPatrols[] = { 1, 2 };
 
 			class Groups {
 				class NorthwestObservationPost {

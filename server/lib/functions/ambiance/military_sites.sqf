@@ -78,8 +78,9 @@ while { true } do {
  				nil, _init, nil] spawn LV_fnc_militarize;
 
  			// Spawn an air patrol
- 			[_center, 2, _radius, [false, false], [false, false, true], false, 0, [1, 0], "default",
- 				nil, _init, nil] spawn LV_fnc_militarize;
+ 			_minMaxAirPatrols = getArray (_config >> "minMaxAirPatrols");
+ 			[_center, 2, _radius, [false, false], [false, false, true], false, 0, _minMaxAirPatrols,
+ 				"default", nil, _init, nil] spawn LV_fnc_militarize;
 
  			[_site, "spawned", true] call CBA_fnc_hashSet;
  		};
