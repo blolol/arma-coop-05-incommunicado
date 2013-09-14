@@ -23,6 +23,11 @@ class Server {
 		description = "Periodically lands enemy troops near players via helicopter";
 	};
 
+	class ambiance_populateMilitaryStructures {
+		file = "server\lib\functions\ambiance\populate_military_structures.sqf";
+		description = "Populates military structures within the given radius with OPFOR units";
+	};
+
 	class ambiance_proximityModifier {
 		file = "server\lib\functions\ambiance\proximity_modifier.sqf";
 		description = "Returns a value between 0 and 1 based on how close the position is to a settlement";

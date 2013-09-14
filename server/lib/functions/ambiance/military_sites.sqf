@@ -8,16 +8,12 @@
 // shouldn't be too much of a problem? If it's feasible, it would be cool to track which military
 // sites have been "cleared" and shouldn't be respawned, so then the units *can* be GCed.
 
-#define PERIOD 15
-#define RANGE 1500
+#define SEARCH_INTERVAL 15
+#define SEARCH_RANGE 1500
 #define LOCATION_TYPES ["NameLocal"]
 
-if (isNil "BLOL_militarySiteUnits") then {
-	BLOL_militarySiteUnits = [];
-};
-
-if (isNil "BLOL_clearedMilitarySites") then {
-	BLOL_clearedMilitarySites = [];
+if (isNil "BLOL_spawnedMilitarySites") then {
+	BLOL_spawnedMilitarySites = [];
 };
 
 if (isNil "LV_fnc_fillHouse") then {
@@ -32,10 +28,10 @@ private ["_debug"];
 _debug = { ["BLOL_fnc_ambiance_militarySites", _this] call BLOL_fnc_debug };
 
 while { true } do {
-	sleep PERIOD;
+	sleep SEARCH_INTERVAL;
 
 	private ["_locations"];
-	_locations = [RANGE, LOCATION_TYPES] call BLOL_fnc_players_nearbyLocations;
+	_locations = [SEARCH_RANGE, LOCATION_TYPES] call BLOL_fnc_players_nearbyLocations;
 	_locations = [_locations, { (toLower (text _x)) == "military" }] call BIS_fnc_conditionalSelect;
 
 	{
@@ -44,37 +40,17 @@ while { true } do {
 		_location = _x;
 		_hash = _location call BLOL_fnc_targets_hash;
 
-		if (!([BLOL_militarySiteUnits, _hash] call BLOL_fnc_hash_hasKey)) then {
-			// TODO Keep track of the military site units
-		};
-
-		if (!(_hash in BLOL_clearedMilitarySites)) then {
-			private ["_target", "_side", "_radius", "_skills", "_init"];
+		if (!(_hash in BLOL_spawnedMilitarySites)) then {
+			private ["_position", "_radius"];
 
 			["Spawning military site %1...", _hash] call _debug;
 
-			_target = position _location;
-			_side = 2;
-			_radius = (size _location) call BIS_fnc_arithmeticMean;
-			_skills = "default";
-			_init = format ["['%1', this] spawn BLOL_fnc_ambiance_trackMilitarySiteUnit", _hash];
+			_position = position _location;
+			_radius = ((size _location) call BIS_fnc_arithmeticMean) * 1.25;
 
-			// Larger zone for air patrols
-			[_target, _side, (_radius * 0.55), [false, false], [false, false, true], false, 0, [0, 2],
-				_skills, nil, _init, nil] spawn LV_fnc_militarize;
+			[(position _location), _radius] call BLOL_fnc_ambiance_populateMilitaryStructures;
 
-			// Smaller zone for ground patrols
-			[_target, _side, (_radius * 0.3), [true, false], [true, false, false], false, [6, 4], 0,
-				_skills, nil, _init, nil] spawn LV_fnc_militarize;
-
-			// Smallest zone for stationary soldiers
-			[_target, _side, (_radius * 0.15), [true, false], [true, false, false], true, [4, 3], 0,
-				_skills, nil, _init, nil] spawn LV_fnc_militarize;
-
-			// Fill buildings with soldiers
-			[_target, _side, true, 1, 75, _radius, _skills, nil, _init, nil] spawn LV_fnc_fillHouse;
-
-			[BLOL_clearedMilitarySites, _hash] call BIS_fnc_arrayPush;
+			[BLOL_spawnedMilitarySites, _hash] call BIS_fnc_arrayPush;
 		};
 	} forEach _locations;
 };
