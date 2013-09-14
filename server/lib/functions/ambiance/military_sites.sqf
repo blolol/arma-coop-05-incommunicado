@@ -49,8 +49,9 @@ while { true } do {
  		_distance = [_center] call BLOL_fnc_players_closestDistanceTo;
 
  		if ((!_spawned) && (_distance <= SPAWN_RANGE)) then {
- 			private ["_radius", "_prizeType", "_prizePositions", "_prizePos", "_prize"];
+ 			private ["_radius", "_init", "_prizeType", "_prizePositions", "_prizePos", "_prize"];
  			_radius = (getMarkerSize _centerMarker) call BIS_fnc_arithmeticMean;
+ 			_init = "this call BLOL_fnc_gc_whitelist";
 
  			["Spawning %1...", _name] call _debug;
 
@@ -62,21 +63,22 @@ while { true } do {
  			_prizePos = getMarkerPos ((getArray (_config >> "prizePositions"))
  				call BIS_fnc_selectRandom);
  			_prize = createVehicle [_prizeType, _prizePos, [], 2, "NONE"];
+ 			_prize call BLOL_fnc_gc_whitelist;
  			_prize setDir ([0, 360] call BIS_fnc_randomInt);
  			_prize setDamage ([0.2, 0.75] call BIS_fnc_randomNum);
  			["Spawned a %1 prize vehicle at %2", _prizeType, _name] call _debug;
 
  			// Spawn guards around the "prize" vehicle
- 			[_prize, 2, 5, [true, false], [false, false, false], true, [4, 2], 0, 0.8, nil, nil, nil]
- 				spawn LV_fnc_militarize;
+ 			[_prize, 2, 5, [true, false], [false, false, false], true, [4, 2], 0, 0.8, nil,
+ 				_init, nil] spawn LV_fnc_militarize;
 
  			// Spawn ground vehicle patrols
  			[_center, 2, (_radius * 0.75), [false, false], [true, false, false], false, 0, [1, 2], "default",
- 				nil, nil, nil] spawn LV_fnc_militarize;
+ 				nil, _init, nil] spawn LV_fnc_militarize;
 
  			// Spawn an air patrol
  			[_center, 2, _radius, [false, false], [false, false, true], false, 0, [1, 0], "default",
- 				nil, nil, nil] spawn LV_fnc_militarize;
+ 				nil, _init, nil] spawn LV_fnc_militarize;
 
  			[_site, "spawned", true] call CBA_fnc_hashSet;
  		};

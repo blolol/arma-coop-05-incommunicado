@@ -73,6 +73,11 @@ class Server {
 		description = "Garbage collects entities far away from players";
 	};
 
+	class gc_whitelist {
+		file = "server\lib\functions\gc\whitelist.sqf";
+		description = "Whitelists an object so that it won't be garbage collected";
+	};
+
 	class objectives_checkForCompletion {
 		file = "server\lib\functions\objectives\check_for_completion.sqf";
 		description = "Checks to see if any objectives have been completed";

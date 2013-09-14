@@ -18,5 +18,5 @@ while { true } do {
 		diag_log "[BLOL_fnc_gc_init] Beginning garbage collection sweep...";
 	};
 
-	[_garbageCollectionDistance] call BLOL_fnc_gc_sweep;
+	[_garbageCollectionDistance] spawn BLOL_fnc_gc_sweep;
 };

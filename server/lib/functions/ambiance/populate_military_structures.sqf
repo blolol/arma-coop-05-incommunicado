@@ -29,6 +29,7 @@ for "_i" from 0 to ((count _groups) - 1) do {
 			_skill = [0.85, 1.0] call BIS_fnc_randomNum;
 
 			_unit = _group createUnit [_type, _position, [], 0, "NONE"];
+			_unit call BLOL_fnc_gc_whitelist;
 			_unit disableAI "MOVE";
 			_unit setPosATL _position;
 			_unit setDir _dir;
