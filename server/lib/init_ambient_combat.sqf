@@ -2,7 +2,7 @@
  * Initializes ambient combat.
 **/
 
-#define MIN_DISTANCE_FROM_SPAWN 1000
+#define MIN_DISTANCE_FROM_SPAWN 750
 
 // Wait until players move away from the spawn point
 waitUntil {
@@ -16,11 +16,11 @@ private ["_minRange", "_maxRange", "_minDelay", "_maxDelay", "_maxGroups", "_sid
 	"_targetUnits", "_aiSkill", "_aiCommunicates", "_despawnRange", "_unitInit", "_patrolType",
 	"_multiplayer", "_options"];
 
-_minRange = 550;
-_maxRange = 1250;
+_minRange = 200;
+_maxRange = 750;
 
-_minDelay = 120;
-_maxDelay = 300;
+_minDelay = 60;
+_maxDelay = 180;
 
 _maxGroups = 3;
 _sideRatios = [
