@@ -60,7 +60,7 @@ while { true } do {
 
  			// Spawn "prize" vehicle
  			_prizeType = call BLOL_fnc_ambiance_randomMilitarySitePrizeClass;
- 			_prizePos = getMarkerPos ((getArray (_config >> "prizePositions"))
+ 			_prizePos = getMarkerPos ((getArray (_config >> "prizes"))
  				call BIS_fnc_selectRandom);
  			_prize = createVehicle [_prizeType, _prizePos, [], 2, "NONE"];
  			_prize call BLOL_fnc_gc_whitelist;

@@ -6,7 +6,7 @@ class MilitarySites {
 	class Locations {
 		class MilitarySite1 {
 			center = "mil_site_0";
-			prizePositions[] = { "mil_site_0_prize_0" };
+			prizes[] = { "mil_site_0_prize_0" };
 
 			class Groups {
 				class SouthEntrance {
@@ -91,6 +91,41 @@ class MilitarySites {
 				};
 			}; // Groups
 		}; // MilitarySite1
+
+		class MilitarySite2 {
+			center = "mil_site_1";
+			prizes[] = { "mil_site_1_prize_0", "mil_site_1_prize_1" };
+
+			class Groups {
+				class NorthObservationPost {
+					minMaxFill[] = { 0.5, 1.0 };
+					positions[] = {
+						{ 15167, 17370.9, 4.13048, 31.1288 },
+						{ 15164.3, 17368.2, 4.15603, 237.809 },
+						{ 15169.1, 17368.7, 3.9103, 151.302 }
+					};
+				};
+
+				class NorthHQ {
+					minMaxFill[] = { 0.25, 0.5 };
+					positions[] = {
+						{ 15187.9, 17371.5, 3.12315, 314.137 },
+						{ 15190.4, 17372.8, 3.1264, 44.6192 },
+						{ 15195.6, 17367.2, 3.13099, 110.491 },
+						{ 15190.2, 17359.7, 3.09548, 179.115 },
+						{ 15184.2, 17363, 3.11643, 247.144 }
+					};
+				};
+
+				class SoutheastEntrance {
+					minMaxFill[] = { 1.0, 1.0 };
+					positions[] = {
+						{ 15221.6, 17297.9, 0.00144958, 132.281 },
+						{ 15210.8, 17287.5, 0.00143814, 134.162 }
+					};
+				};
+			}; // Groups
+		}; // MilitarySite2
 	}; // Locations
 
 	class Prizes {

@@ -598,7 +598,7 @@ class Mission
 	};
 	class Markers
 	{
-		items=23;
+		items=25;
 		class Item0
 		{
 			position[]={4585.0996,261.96136,15400.311};
@@ -768,6 +768,24 @@ class Mission
 			position[]={12813.754,87.129921,16686.814};
 			name="mil_site_0_prize_0";
 			text="Military Site #0 Prize #0";
+			type="Empty";
+		};
+		class Item23
+		{
+			position[]={15186.679,17.887812,17328.74};
+			name="mil_site_1";
+			text="Military Site #1";
+			markerType="ELLIPSE";
+			type="Empty";
+			colorName="ColorOPFOR";
+			a=100;
+			b=100;
+		};
+		class Item24
+		{
+			position[]={15192.551,17.926165,17302.928};
+			name="mil_site_1_prize_0";
+			text="Military Site #1 Prize #0";
 			type="Empty";
 		};
 	};
