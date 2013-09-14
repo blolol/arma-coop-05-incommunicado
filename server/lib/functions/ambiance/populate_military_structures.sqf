@@ -39,9 +39,8 @@ _debug = { ["BLOL_fnc_ambiance_populateMilitaryStructures", _this] call BLOL_fnc
 		_count = count _positions;
 		_percentage = 0.5;
 
-		if (_count < 3) then { _percentage = [0.5, 1.0] call BIS_fnc_randomNum };
-		if (_count >= 3 && _count <= 5) then { _percentage = [0.4, 0.75] call BIS_fnc_randomNum };
-		if (_count > 5) then { _percentage = [0.2, 0.4] call BIS_fnc_randomNum };
+		if (_count < 5) then { _percentage = [0.5, 1.0] call BIS_fnc_randomNum };
+		if (_count > 5) then { _percentage = [0.3, 0.5] call BIS_fnc_randomNum };
 
 		// Spawn units
 		_group = createGroup SIDE;
